@@ -4,3 +4,6 @@
     </x-slot:heading>
     <p>home page</p>
 </x-layout>
+
+
+

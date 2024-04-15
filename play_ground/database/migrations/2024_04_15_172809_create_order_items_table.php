@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('order_items', function (Blueprint $table) {
-            $table->id();
-            $table->foreignIdFor(App\Models\Order::class);
-            $table->foreignIdFor(App\Models\Product::class);
+            $table->uuid('id')->primary()->index();
+            $table->foreign('order_id')->references('id')->on('orders');
+            $table->foreign('product_id')->references('id')->on('products');
             $table->integer('quantity');
             $table->float('price');
             $table->timestamps();

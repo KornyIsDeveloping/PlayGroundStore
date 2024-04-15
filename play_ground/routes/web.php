@@ -14,7 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/', 'home');
-Route::view('/games', 'games');
+Route::resource('products', 'ProductController');
 Route::view('/cart', 'cart');
 Route::view('/wishlist', 'wishlist');
 Route::view('/contact', 'contact');
+
+Route::view('/test', 'test');
+

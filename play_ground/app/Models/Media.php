@@ -6,18 +6,12 @@ use App\Traits\UuidTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Cart extends Model
+class Media extends Model
 {
     use HasFactory, UuidTrait;
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    public function product()
+    public function product(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Product::class);
     }
-
 }

@@ -23,10 +23,10 @@
                             <div class="ml-10 flex items-baseline space-x-4">
                                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                                 <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
-                                <x-nav-link href="/games" :active="request()->is('jobs')">Games</x-nav-link>
-                                <x-nav-link href="/wishlist" :active="request()->is('jobs')">Wishlist</x-nav-link>
-                                <x-nav-link href="/cart" :active="request()->is('contact')">Cart</x-nav-link>
-                                <x-nav-link href="/contact" :active="request()->is('store')">Contact</x-nav-link>
+                                <x-nav-link href="/products" :active="request()->is('products')">Games</x-nav-link>
+                                <x-nav-link href="/wishlist" :active="request()->is('wishlist')">Wishlist</x-nav-link>
+                                <x-nav-link href="/cart" :active="request()->is('cart')">Cart</x-nav-link>
+                                <x-nav-link href="/contact" :active="request()->is('contact')">Contact</x-nav-link>
                             </div>
                         </div>
                     </div>
@@ -75,7 +75,7 @@
                 <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
                     <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                     <a href="/" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Home</a>
-                    <a href="/games" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Games</a>
+                    <a href="/products" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Games</a>
                     <a href="/wishlist" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Wishlist</a>
                     <a href="/cart" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Cart</a>
                     <a href="/contact" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Contact</a>

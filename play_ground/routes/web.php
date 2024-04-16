@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RegisteredUserController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
@@ -63,3 +64,7 @@ Route::view('/test', 'test');
 //Route::get('/contact', function () {
 //    return view('contact');
 //});
+
+Route::get('/register', [RegisteredUserController::class, 'create']);
+Route::post('/register', [RegisteredUserController::class, 'store']);
+

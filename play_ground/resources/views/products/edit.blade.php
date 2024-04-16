@@ -2,7 +2,7 @@
     <x-slot:heading>
         Edit Game: {{ $product->name }}
     </x-slot:heading>
-    <form method="POST" action="/products/{{ $product->id }}">
+    <form method="POST" action="{{ route('products.update', $product->id) }}">
         @csrf
         @method('PATCH')
         <div class="space-y-12">
@@ -38,7 +38,7 @@
                                     value="{{ $product->description }}"
                                     class="block flex-1 border-0 bg-transparent py-1.5 px-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                                     placeholder="Edit your listing game information..."
-                                    required></textarea>
+                                    required>{{ $product->description }}</textarea>
                             </div>
                             @error('description')
                             <p class="text-xs text-red-400 font-semibold mt-1">{{ $message }}</p>
@@ -113,7 +113,7 @@
             <div class="flex items-center gap-x-6">
                 <a href="/products" class="text-sm font-semibold leading-6 text-gray-900">Cancel</a>
                 <div>
-                    <button href="/products/" type="submit" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Update</button>
+                    <button type="submit" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Update</button>
                 </div>
             </div>
         </div>

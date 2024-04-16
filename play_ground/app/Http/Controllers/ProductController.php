@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -31,7 +32,11 @@ class ProductController extends Controller
         return view('products.create');
     }
 
-    public function show(Product $product)
+    /**
+     * @param Product $product
+     * @return Application|Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
+     */
+    public function show(Product $product): Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|Application
     {
         return view('products.show', ['product'=>$product]);
     }
@@ -50,23 +55,36 @@ class ProductController extends Controller
             'stock' => 'required',
         ], []);
 
-        (new \App\Models\Product)->create([
-            'name' => request('name'),
-            'description' => request('description'),
-            'price' => request('price'),
-            'currency' => request('currency'),
-            'stock' => request('stock'),
+        if ($validated->fails()) {
+            dd($validated->errors()->first());
+        }
+
+        (new Product)->create([
+            'name' => $request->get('name'),
+            'description' => $request->get('description'),
+            'price' => $request->get('price'),
+            'currency' => $request->get('currency'),
+            'stock' => $request->get('stock'),
         ]);
 
         return redirect('/products');
     }
 
-    public function edit(Product $product)
+    /**
+     * @param Product $product
+     * @return Application|Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
+     */
+    public function edit(Product $product): Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|Application
     {
         return view('products.edit', ['product'=>$product]);
     }
 
-    public function update(Request $request, Product $product)
+    /**
+     * @param Request $request
+     * @param Product $product
+     * @return RedirectResponse
+     */
+    public function update(Request $request, Product $product): RedirectResponse
     {
         $validated = Validator::make($request->all(), [
             'name' => 'required',
@@ -80,15 +98,15 @@ class ProductController extends Controller
             dd($validated->errors()->first());
         }
 
-        $product-> update([
-            'name' => request('name'),
-            'description' => request('description'),
-            'price' => request('price'),
-            'currency' => request('currency'),
-            'stock' => request('stock'),
+        $product->update([
+            'name' => $request->get('name'),
+            'description' => $request->get('description'),
+            'price' => $request->get('price'),
+            'currency' => $request->get('currency'),
+            'stock' => $request->get('stock'),
         ]);
 
-        return redirect('/products/' . $product->id);
+        return redirect()->route('products.index');
     }
 
     public function destroy(Product $product): Application|\Illuminate\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector

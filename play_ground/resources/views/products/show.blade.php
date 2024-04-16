@@ -3,12 +3,7 @@
         Read More page
 
     </x-slot:heading>
-{{--    <div>--}}
-{{--        <p class="mb-3 font-normal text-gray-700 dark:text-black-400">{{$product->description}}</p>--}}
-{{--        <p class="mb-3 font-normal text-gray-700 dark:text-black-400">{{$product->price}} {{$product->currency}}</p>--}}
-{{--        <p class="mb-3 font-normal text-gray-700 dark:text-black-400">{{$product->stock}}</p>--}}
-{{--    </div>--}}
-
+{{-- after you click on a  product from the game page --}}
     <!-- component -->
     <section class="text-gray-700 body-font overflow-hidden bg-white">
         <div class="container px-5 py-24 mx-auto">

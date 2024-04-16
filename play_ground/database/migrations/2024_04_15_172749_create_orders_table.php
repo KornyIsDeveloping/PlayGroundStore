@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->uuid('id')->primary()->index();
+            $table->uuid('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->float('total_price');
             $table->string('status');

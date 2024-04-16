@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('order_items', function (Blueprint $table) {
             $table->uuid('id')->primary()->index();
-            $table->foreign('order_id')->references('id')->on('orders');
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->uuid('order_id');
+            $table->uuid('product_id');
             $table->integer('quantity');
             $table->float('price');
+            $table->foreign('order_id')->references('id')->on('orders');
+            $table->foreign('product_id')->references('id')->on('products');
             $table->timestamps();
         });
     }

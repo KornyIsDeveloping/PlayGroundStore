@@ -28,7 +28,6 @@ class ProductController extends Controller
      */
     public function create()
     {
-
         return view('products.create');
     }
 
@@ -51,7 +50,7 @@ class ProductController extends Controller
             'stock' => 'required',
         ], []);
 
-        Product::create([
+        (new \App\Models\Product)->create([
             'name' => request('name'),
             'description' => request('description'),
             'price' => request('price'),

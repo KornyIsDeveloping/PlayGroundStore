@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('wishlist', function (Blueprint $table) {
             $table->uuid('id')->primary()->index();
+            $table->uuid('user_id');
+            $table->uuid('product_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('product_id')->references('id')->on('products');
             $table->timestamps();

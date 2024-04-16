@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('media', function (Blueprint $table) {
             $table->uuid('id')->primary()->index();
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->string('filename');
+            $table->uuid('product_id');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->boolean('is_primary')->default(false);
             $table->timestamps();
 
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+
         });
     }
 

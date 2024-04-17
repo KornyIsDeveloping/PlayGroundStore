@@ -15,7 +15,7 @@ class CreateUserCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'user:create {first_name} {last_name} {email} {password}'; //the name of the command
+    protected $signature = 'user:create {--count=} {--verified}'; //the name of the command
 
     /**
      * The console command description.
@@ -34,20 +34,21 @@ class CreateUserCommand extends Command
         $bar = $this->output->createProgressBar($count);
         $bar->start();
         for ($i = 1; $i < $count; $i++) {
-            $first_name = $this->argument('first_name');
-            $last_name = $this->argument('last_name');
-            $email = $this->argument('email');
-            $password = $this->argument('password');
+            $first_name = Str::random(8);
+            $last_name = Str::random(8);
+            $email = $first_name . '@example.com';
+            $password = Str::random(12);
 
             (new \App\Models\User)->create([
                 'first_name' => $first_name,
                 'last_name' => $last_name,
                 'email' => $email,
                 'password' => bcrypt($password),
+                'email_verified_at' => $this->option('verified') ? now() : null,
             ]);
             $bar->advance();
         }
         $bar->finish();
-        $this->info('User created successfully: Email: ' . $email .'; Password: ' . $password);
+        $this->info(' ' . $count . ' Users created.');
     }
 }

@@ -17,13 +17,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'home');
+Route::view('/', 'home')->name('home');
 Route::resource('products', ProductController::class);
 Route::view('/cart', 'cart');
 Route::view('/wishlist', 'wishlist');
 Route::view('/contact', 'contact');
 
 Route::view('/test', 'test');
+
+//Route::group(['prefix' => 'accounts', 'as' => 'account.'], function() {
+//    Route::resource('products', ProductController::class);
+//
+//    Route::get('/test', function () {
+//        dd('test');
+//    })->name('test');
+//});
+
+
 
 
 //Route::get('/', function () {
@@ -66,12 +76,12 @@ Route::view('/test', 'test');
 //    return view('contact');
 //});
 
-Route::get('/register', [RegisteredUserController::class, 'create']);
-Route::post('/register', [RegisteredUserController::class, 'store']);
+Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
+Route::post('/register', [RegisteredUserController::class, 'store'])->name('register');
 
-Route::get('/login', [SessionController::class, 'create']);
-Route::post('/login', [SessionController::class, 'store']);
-Route::post('/logout', [SessionController::class, 'destroy']);
+Route::get('/login', [SessionController::class, 'create'])->name('login');
+Route::post('/login', [SessionController::class, 'store'])->name('login');
+Route::post('/logout', [SessionController::class, 'destroy'])->name('logout');
 
 
 

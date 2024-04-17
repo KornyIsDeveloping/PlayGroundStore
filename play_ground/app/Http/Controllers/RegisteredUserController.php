@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Password;
 
@@ -17,10 +20,12 @@ class RegisteredUserController extends Controller
         return view('auth.register');
     }
 
+
     /**
-     * @return void
+     * @return Application|\Illuminate\Foundation\Application|RedirectResponse|Redirector
      */
-    public function store() {
+    public function store()
+    {
         //validate
         $attributes = request()->validate([
            'first_name' => ['required'],
@@ -36,6 +41,6 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         //redirect somewhere
-        return redirect('/products');
+        return redirect()->route('products.index');
     }
 }

@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
@@ -19,11 +21,13 @@ class SessionController extends Controller
         return view('auth.login');
     }
 
+
     /**
-     * @return void
+     * @return Application|\Illuminate\Foundation\Application|RedirectResponse|Redirector
      * @throws ValidationException
      */
-    public function store() {
+    public function store()
+    {
         //validate
         $attributes = request()->validate([
            'email' => ['required', 'email'],
@@ -43,11 +47,13 @@ class SessionController extends Controller
         return redirect('/products');
     }
 
+
     /**
-     * @return void
+     * @return RedirectResponse
      */
-    public function destroy() {
+    public function destroy()
+    {
         Auth::logout();
-        return redirect('/');
+        return redirect()->route('home');
     }
 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
+use App\Jobs\FirstJob;
 use App\Jobs\TestJob;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
@@ -24,8 +25,6 @@ Route::view('/cart', 'cart');
 Route::view('/wishlist', 'wishlist');
 Route::view('/contact', 'contact');
 
-Route::view('/test', 'test');
-
 //explicatii
 //Route::group(['prefix' => 'accounts', 'as' => 'account.'], function() {
 //    Route::resource('products', ProductController::class);
@@ -44,9 +43,12 @@ Route::post('/login', [SessionController::class, 'store'])->name('login');
 Route::post('/logout', [SessionController::class, 'destroy'])->name('logout');
 
 
-Route::get('/testQueue', function() {
-    dispatch(new TestJob());
-});
+//Route::get('/test', function() {
+//    dispatch(new TestJob());
+//});
 
+Route::get('/test', function() {
+    dispatch(new FirstJob());
+});
 
 

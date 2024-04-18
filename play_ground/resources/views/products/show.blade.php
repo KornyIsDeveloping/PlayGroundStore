@@ -23,6 +23,7 @@
                     </div>
                 </div>
             </div>
+            <a href="/products" class="text-sm font-semibold leading-6 text-gray-900">Back</a>
         </div>
     </section>
 </x-layout>

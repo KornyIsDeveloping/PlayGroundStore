@@ -14,12 +14,15 @@
                     <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">{{$product->name}}</h1>
                     <div class="flex mb-4">
                     </div>
-                    <p class="leading-relaxed">{{ $product->description }}</p>
+                    <div class="flex display-flex justify-between">
+                        <p class="leading-relaxed">{{ $product->description }}</p>
+                        <p class="leading-relaxed">Only {{ $product->stock }} left</p>
+                    </div>
                     <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
                     </div>
                     <div class="flex">
                         <span class="title-font font-medium text-2xl text-gray-900">{{ $product->price }} {{$product->currency}}</span>
-                        <button class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Add to cart</button>
+                        <button type="submit" class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Add to cart</button>
                     </div>
                 </div>
             </div>

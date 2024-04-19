@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
@@ -45,6 +46,8 @@ Route::post('/logout', [SessionController::class, 'destroy'])->name('logout');
 //edit path
 //Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->middleware('auth')->name('products.edit');
 
+//add to cart path
+Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
 
 
 //Route::get('/test', function() {

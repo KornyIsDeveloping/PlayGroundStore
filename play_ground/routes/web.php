@@ -42,6 +42,10 @@ Route::get('/login', [SessionController::class, 'create'])->name('login');
 Route::post('/login', [SessionController::class, 'store'])->name('login');
 Route::post('/logout', [SessionController::class, 'destroy'])->name('logout');
 
+//edit path
+//Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->middleware('auth')->name('products.edit');
+
+
 
 //Route::get('/test', function() {
 //    dispatch(new TestJob());
@@ -50,5 +54,8 @@ Route::post('/logout', [SessionController::class, 'destroy'])->name('logout');
 Route::get('/test', function() {
     dispatch(new FirstJob());
 });
+
+//search route
+Route::get('/search', [ProductController::class, 'search'])->name('product.search');
 
 

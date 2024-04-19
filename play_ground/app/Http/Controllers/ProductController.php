@@ -8,6 +8,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Validator;
 
@@ -71,11 +72,31 @@ class ProductController extends Controller
     }
 
     /**
+     * @param Request $request
+     * @return Application|Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
+     */
+    public function search(Request $request)
+    {
+        $search = $request->input('search_query');
+
+        //search query
+        $searchResults = Product::where('name', 'like', "%{$search}%")->get();
+
+        //return the search results
+        return view('search-results', compact('searchResults'));
+    }
+
+    /**
      * @param Product $product
      * @return Application|Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
      */
     public function edit(Product $product): Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|Application
     {
+        //edit only if you're logged in
+//        if(Auth::guest()) {
+//            return redirect('/login');
+//        }
+
         return view('products.edit', ['product'=>$product]);
     }
 

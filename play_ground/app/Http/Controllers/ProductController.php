@@ -119,13 +119,6 @@ class ProductController extends Controller
             dd($validated->errors()->first());
         }
 
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imageData = file_get_contents($image);
-            $base64 = base64_encode($imageData);
-            $product->image = $base64;
-        }
-
         $product->update([
             'name' => $request->get('name'),
             'description' => $request->get('description'),

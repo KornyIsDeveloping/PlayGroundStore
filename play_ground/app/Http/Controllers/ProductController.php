@@ -93,9 +93,9 @@ class ProductController extends Controller
     public function edit(Product $product): Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|Application
     {
         //edit only if you're logged in
-//        if(Auth::guest()) {
-//            return redirect('/login');
-//        }
+        if(Auth::guest()) {
+            return redirect('/login');
+        }
 
         return view('products.edit', ['product'=>$product]);
     }

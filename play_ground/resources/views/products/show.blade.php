@@ -16,8 +16,8 @@
                     </div>
                     <div class="flex display-flex justify-between">
                         <p class="leading-relaxed">{{ $product->description }}</p>
-                        <p class="leading-relaxed">Only {{ $product->stock }} left</p>
                     </div>
+                    <p class="leading-relaxed">Only {{ $product->stock }} left</p>
                     <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
                     </div>
                     <div class="flex">

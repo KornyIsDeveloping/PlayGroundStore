@@ -3,14 +3,48 @@
         Wishlist Page
     </x-slot:heading>
     <div class="grid grid-rows-1 gap-4">
-        @foreach($wishlists as $wishlist)
-            <a href="/wishlist" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xxl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="" alt="image from the database">
-                <div class="flex flex-col justify-between p-4 leading-normal">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+{{--        @foreach($wishlists as $wishlist)--}}
+        <div class="h-screen py-8">
+            <div class="container mx-auto px-4">
+                <h1 class="text-2xl font-semibold mb-4">Your wishlist</h1>
+                <div class="flex flex-col md:flex-row gap-4">
+                    <div class="md:w-3/4">
+                        <div class="bg-white rounded-lg shadow-md p-6 mb-4">
+                            <table class="w-full">
+                                <thead>
+                                <tr>
+                                    <th class="text-left font-semibold">Game</th>
+                                    <th class="text-left font-semibold">Price</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td class="py-4">
+                                        <div class="flex items-center">
+                                            <img class="h-16 w-16 mr-4" src="https://via.placeholder.com/150" alt="Product image">
+                                            {{--                                        <span class="font-semibold">{{ $product->name }}</span>--}}
+                                        </div>
+                                    </td>
+                                    {{--                                <td class="py-4">{{ $product->price }} {{ $product->currency }}</td>--}}
+                                    <td class="py-4">
+                                        <div class="flex items-center">
+{{--                                            about the game --}}
+                                        </div>
+                                    </td>
+                                    <td class="py-4"></td>
+                                </tr>
+                                <!-- More product rows -->
+                                </tbody>
+                            </table>
+                            <div class="flex justify-end display-flex">
+                                <button type="submit" class="flex text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded mr-2">Add to cart</button>
+                                <button type="submit" class="flex text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Remove</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </a>
-        @endforeach
+            </div>
+        </div>
+{{--        @endforeach--}}
     </div>
 </x-layout>

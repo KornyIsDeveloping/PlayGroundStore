@@ -15,10 +15,13 @@ use Illuminate\Support\Facades\Validator;
 class ProductController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-
-        $products = Product::all();
+        if ($name = $request->get('name')) {
+            $products = Product::query()->where('name', 'like', "%{$name}%")->get();
+        } else {
+            $products =  Product::all();
+        }
 
         return view('products.index', [
             'products' => $products
@@ -80,7 +83,7 @@ class ProductController extends Controller
         $search = $request->input('search_query');
 
         //search query
-        $searchResults = Product::where('name', 'like', "%{$search}%")->get();
+        $searchResults = Product::query()->where('name', 'like', "%{$search}%")->get();
 
         //return the search results
         return view('search-results', compact('searchResults'));

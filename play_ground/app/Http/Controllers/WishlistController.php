@@ -9,35 +9,37 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
 
 
 class WishlistController extends Controller
 {
-    /**
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
-     */
     public function addToWishlist(Request $request)
     {
 
-    }
+        //validare pe productId
+        //query dupa product id
+        //accesam user id : auth()->id()
 
-    /**
-     * @param Request $request
-     * @return RedirectResponse
-     */
-    public function removeProduct(Request $request)
-    {
-        // Get the product ID from the request
-        $product_id = $request->input('product_id');
+        //wishlist create
 
-        // Find the wishlist entry and delete it
-        Wishlist::where('user_id', auth()->id())
-            ->where('product_id', $product_id)
-            ->delete();
+        //return json
 
-        return redirect()->back();  // Redirect back to the wishlist page
+
+        dd($request->all());
+//        $user = Auth::user();
+//
+//        // Check if product is already in the user's wishlist
+//        if (!Wishlist::query()->where('user_id', $user->id)->where('product_id', $product_id)->exists()) {
+//            Wishlist::query()->create([
+//                'user_id' => $user->id,
+//                'product_id' => $product_id,
+//            ]);
+//        }
+//
+//        return redirect()->back(); // Redirect back to the referring page
     }
 
     /**
@@ -45,9 +47,9 @@ class WishlistController extends Controller
      */
     public function index()
     {
-        $userId = auth()->id();
-        $wishlists = Wishlist::where('user_id', $userId)->with('product')->get();
-//        $wishlists = Wishlist::with(['product', 'user'])->get();
-        return view('wishlist', compact('wishlists'));
+        $user = Auth::user();
+        $wishlists = Wishlist::with('product')->where('user_id', $user->id)->get();
+
+        return view('wishlists.index', ['wishlists' => $wishlists]);
     }
 }

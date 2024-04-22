@@ -44,20 +44,5 @@
             </div>
         @endforeach
     </form>
-
-    <div class="container mx-auto px-4">
-        <h1 class="text-2xl font-semibold mb-4">Your Wishlist</h1>
-        @foreach($wishlists as $wishlist)
-            <div class="bg-white rounded-lg shadow-md p-6 mb-4">
-                <div class="flex items-center">
-                    <img src="{{ $wishlist->product->image_url }}" alt="Product Image" class="h-16 w-16">
-                    <span>{{ $wishlist->product->name }}</span>
-                </div>
-                <p>{{ $wishlist->product->description }}</p>
-                <p>{{ $wishlist->product->price }} {{ $wishlist->product->currency }}</p>
-            </div>
-        @endforeach
-    </div>
-
 </x-layout>
 

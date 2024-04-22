@@ -25,9 +25,12 @@ Route::view('/', 'home')->name('home');
 Route::resource('products', ProductController::class);
 Route::view('/cart', 'cart');
 //Route::view('/wishlist', 'wishlist');
-Route::get('/wishlist', [WishlistController::class, 'index']);
+//Route::get('/wishlist', [WishlistController::class, 'index']);
+//Route::post('/wishlist/add', [WishlistController::class, 'addToWishlist'])->name('wishlist.add');
+//Route::post('/wishlist/remove', [WishlistController::class, 'removeProduct'])->name('remove.from.wishlist');
 Route::post('/wishlist/add', [WishlistController::class, 'addToWishlist'])->name('wishlist.add');
-Route::post('/wishlist/remove', [WishlistController::class, 'removeProduct'])->name('remove.from.wishlist');
+Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
+
 
 
 Route::view('/contact', 'contact');

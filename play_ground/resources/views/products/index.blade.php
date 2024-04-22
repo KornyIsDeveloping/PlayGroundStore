@@ -82,7 +82,7 @@
             axios.post(addToWishListRoute, {
                 productId
             }).then(({data}) => {
-                console.log(data)
+                console.log(data) //add red heart de adaugat clasa e.currentTarget.find si adaug clasa stilizata din css
             }).catch(({response}) => {
                 console.log(response)
             })

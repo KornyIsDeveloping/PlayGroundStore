@@ -4,6 +4,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\WishlistController;
 use App\Jobs\FirstJob;
 use App\Jobs\TestJob;
 use App\Models\Product;
@@ -23,7 +24,12 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'home')->name('home');
 Route::resource('products', ProductController::class);
 Route::view('/cart', 'cart');
-Route::view('/wishlist', 'wishlist');
+//Route::view('/wishlist', 'wishlist');
+Route::get('/wishlist', [WishlistController::class, 'index']);
+Route::post('/wishlist/add', [WishlistController::class, 'addToWishlist'])->name('wishlist.add');
+Route::post('/wishlist/remove', [WishlistController::class, 'removeProduct'])->name('remove.from.wishlist');
+
+
 Route::view('/contact', 'contact');
 
 //explicatii

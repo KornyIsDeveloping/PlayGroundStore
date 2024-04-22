@@ -43,7 +43,7 @@ class Product extends Model
 {
     use HasFactory, UuidTrait;
 
-    protected $fillable = ['name', 'description', 'price', 'currency', 'product_id'];
+    protected $fillable = ['name', 'description', 'price', 'currency', 'stock', 'product_id'];
 
     public function wishlist(): \Illuminate\Database\Eloquent\Relations\HasMany
     {

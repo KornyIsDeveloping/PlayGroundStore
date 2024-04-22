@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot:heading>
-        Read More page
+        More about: {{$product->name}}
 
     </x-slot:heading>
 {{-- after you click on a  product from the game page --}}

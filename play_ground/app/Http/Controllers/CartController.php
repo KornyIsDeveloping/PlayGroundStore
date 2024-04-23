@@ -44,7 +44,7 @@ class CartController extends Controller
         ])){
             return response()->json([
                 'status' => 'success',
-                'message' => 'Product added to wishlist.',
+                'message' => 'Product added to cart.',
             ], 200);
         }
 

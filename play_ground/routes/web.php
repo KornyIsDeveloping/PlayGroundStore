@@ -51,7 +51,7 @@ Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->midd
 
 //add to cart path
 Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
-Route::view('/cart', 'cart')->name('cart');
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 
 //search route
 Route::get('/search', [ProductController::class, 'search'])->name('product.search');

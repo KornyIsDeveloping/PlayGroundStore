@@ -8,6 +8,7 @@ use Exception;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,6 +18,10 @@ use Illuminate\Support\Facades\Validator;
 
 class WishlistController extends Controller
 {
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
     public function addToWishlist(Request $request)
     {
 
@@ -54,28 +59,11 @@ class WishlistController extends Controller
            ], 200);
        }
 
+        //return json
         return response()->json([
             'status' => 'error',
             'message' => 'Unknown error',
         ], 401);
-
-        //return json
-
-
-
-
-
-//        $user = Auth::user();
-//
-//        // Check if product is already in the user's wishlist
-//        if (!Wishlist::query()->where('user_id', $user->id)->where('product_id', $product_id)->exists()) {
-//            Wishlist::query()->create([
-//                'user_id' => $user->id,
-//                'product_id' => $product_id,
-//            ]);
-//        }
-//
-//        return redirect()->back(); // Redirect back to the referring page
     }
 
     /**

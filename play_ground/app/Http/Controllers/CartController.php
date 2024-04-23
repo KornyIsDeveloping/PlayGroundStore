@@ -3,42 +3,63 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class CartController extends Controller
 {
-    /**
-     * @param Request $request
-     * @return RedirectResponse
-     */
     public function addToCart(Request $request)
     {
-        $productId = $request->input('product_id');
-        $quantity = $request->input('quantity');
 
-        // Assuming you have a User model and each user has a cart
-        $userId = Auth::user()->id;
+        //validare pe productId
+        $validated = Validator::make($request->all(), [
+            'productId' => 'required',
+        ]);
 
-        $cartItem = Cart::where('user_id', $userId)
-            ->where('product_id', $productId)
-            ->first();
-
-        if ($cartItem) {
-            // If the item already exists in the cart, update the quantity
-            $cartItem->quantity += $quantity;
-            $cartItem->save();
-        } else {
-            // If the item is not in the cart, create a new cart item
-            Cart::create([
-                'user_id' => $userId,
-                'product_id' => $productId,
-                'quantity' => $quantity,
-            ]);
+        if ($validated->fails()) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Validation failed',
+            ], 401);
         }
 
-        // Redirect back or to the cart page
-        return redirect()->back()->with('success', 'Product added to cart successfully');
+        $product_id = $request->get('productId');
+
+        //query dupa product id
+        if(! $product = Product::query()->where('id', $product_id)->first()) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Product not found',
+            ], 401);
+        }
+        //accesam user id : auth()->id()
+
+        //cart create
+        if( Cart::query()->create([
+            'user_id' => auth()->id(),
+            'product_id' => $product->id,
+        ])){
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Product added to wishlist.',
+            ], 200);
+        }
+
+        //return json
+        return response()->json([
+            'status' => 'error',
+            'message' => 'Unknown error',
+        ], 401);
+    }
+
+    public function index()
+    {
+        $user = Auth::user();
+        $cart = Cart::with('product')->where('user_id', $user->id)->get();
+
+        return view('cart.index', ['carts' => $cart]);
     }
 }

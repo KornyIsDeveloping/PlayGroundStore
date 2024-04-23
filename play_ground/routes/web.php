@@ -20,14 +20,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/', 'home')->name('home');
-Route::resource('products', ProductController::class);
-Route::view('/cart', 'cart');
+Route::resource('products', ProductController::class)->names('products');
+
+//wishlist
 Route::post('/wishlist/add', [WishlistController::class, 'addToWishlist'])->name('wishlist.add');
 Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
 
 
-
-Route::view('/contact', 'contact');
+//contact
+Route::view('/contact', 'contact')->name('contact');
 
 //explicatii
 //Route::group(['prefix' => 'accounts', 'as' => 'account.'], function() {
@@ -38,10 +39,9 @@ Route::view('/contact', 'contact');
 //    })->name('test');
 //});
 
-
+//login, register, logout
 Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
 Route::post('/register', [RegisteredUserController::class, 'store'])->name('register');
-
 Route::get('/login', [SessionController::class, 'create'])->name('login');
 Route::post('/login', [SessionController::class, 'store'])->name('login');
 Route::post('/logout', [SessionController::class, 'destroy'])->name('logout');
@@ -51,6 +51,7 @@ Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->midd
 
 //add to cart path
 Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
+Route::view('/cart', 'cart')->name('cart');
 
 //search route
 Route::get('/search', [ProductController::class, 'search'])->name('product.search');

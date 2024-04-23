@@ -21,6 +21,7 @@ class Cart extends Model
 {
     use HasFactory, UuidTrait;
 
+        protected $guarded = [];
     public function user()
     {
         return $this->belongsTo(User::class);

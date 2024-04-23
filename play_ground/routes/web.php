@@ -5,8 +5,6 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\WishlistController;
-use App\Jobs\FirstJob;
-use App\Jobs\TestJob;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
@@ -24,10 +22,6 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'home')->name('home');
 Route::resource('products', ProductController::class);
 Route::view('/cart', 'cart');
-//Route::view('/wishlist', 'wishlist');
-//Route::get('/wishlist', [WishlistController::class, 'index']);
-//Route::post('/wishlist/add', [WishlistController::class, 'addToWishlist'])->name('wishlist.add');
-//Route::post('/wishlist/remove', [WishlistController::class, 'removeProduct'])->name('remove.from.wishlist');
 Route::post('/wishlist/add', [WishlistController::class, 'addToWishlist'])->name('wishlist.add');
 Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
 
@@ -57,15 +51,6 @@ Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->midd
 
 //add to cart path
 Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
-
-
-//Route::get('/test', function() {
-//    dispatch(new TestJob());
-//});
-
-Route::get('/test', function() {
-    dispatch(new FirstJob());
-});
 
 //search route
 Route::get('/search', [ProductController::class, 'search'])->name('product.search');

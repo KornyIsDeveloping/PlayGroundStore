@@ -27,7 +27,7 @@ class WishlistController extends Controller
 
         //validare pe productId
         $validated = Validator::make($request->all(), [
-                'productId' => 'required',
+            'productId' => 'required',
         ]);
 
         if ($validated->fails()) {
@@ -40,24 +40,24 @@ class WishlistController extends Controller
         $product_id = $request->get('productId');
 
         //query dupa product id
-       if(! $product = Product::query()->where('id', $product_id)->first()) {
-           return response()->json([
-               'status' => 'error',
-               'message' => 'Product not found',
-           ], 401);
-       }
+        if(! $product = Product::query()->where('id', $product_id)->first()) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Product not found',
+            ], 401);
+        }
         //accesam user id : auth()->id()
 
         //wishlist create
-       if( Wishlist::query()->create([
-           'user_id' => auth()->id(),
-           'product_id' => $product->id,
-       ])){
-           return response()->json([
-               'status' => 'success',
-               'message' => 'Product added to wishlist.',
-           ], 200);
-       }
+        if( Wishlist::query()->create([
+            'user_id' => auth()->id(),
+            'product_id' => $product->id,
+        ])){
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Product added to wishlist.',
+            ], 200);
+        }
 
         //return json
         return response()->json([

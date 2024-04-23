@@ -44,6 +44,14 @@
                 <div class="md:w-1/4">
                     <div class="bg-white rounded-lg shadow-md p-6">
                         <h2 class="text-lg font-semibold mb-4">Summary</h2>
+{{--                        <div class="flex justify-between mb-2">--}}
+{{--                            <span class="font-semibold">Total</span>--}}
+{{--                            @if($cart && $cart->price)--}}
+{{--                                <span class="font-semibold">{{ $cart->price->count() }}</span>--}}
+{{--                            @else--}}
+{{--                                <span class="font-semibold">0.00</span>--}}
+{{--                            @endif--}}
+{{--                        </div>--}}
                         <div class="flex justify-between mb-2">
                             <span class="font-semibold">Total</span>
                             <span class="font-semibold">${{ number_format($totalPrice, 2) }}</span>

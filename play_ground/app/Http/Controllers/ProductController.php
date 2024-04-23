@@ -57,18 +57,25 @@ class ProductController extends Controller
             'price' => 'required',
             'currency' => 'required',
             'stock' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ], []);
 
         if ($validated->fails()) {
             dd($validated->errors()->first());
         }
-
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            dd($image);
+            $imagePath = 'public/image/' .  $image;
+        }
         (new Product)->create([
             'name' => $request->get('name'),
             'description' => $request->get('description'),
             'price' => $request->get('price'),
             'currency' => $request->get('currency'),
             'stock' => $request->get('stock'),
+            'image' => $imagePath
+
         ]);
 
         return redirect('/products');

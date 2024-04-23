@@ -1,4 +1,4 @@
-<x-layout>
+e<x-layout>
     <x-slot:heading>
         Add a game
     </x-slot:heading>
@@ -66,7 +66,7 @@
                                 <span>Drag and drop</span>
                                 <span class="text-indigo-600"> or browse</span>
                                 <span>to upload</span>
-                                <input id="file-upload" name="file-upload" type="file" class="sr-only">
+                                <input id="image" name="image" type="file" class="sr-only">
                             </label>
                         </h3>
                         <p class="mt-1 text-xs text-gray-500">
@@ -78,7 +78,7 @@
                 </div>
 
                 <script>
-                    var dropzone = document.getElementById('dropzone');
+                    var dropzone = document.getElementById('ropzone');
 
                     dropzone.addEventListener('dragover', e => {
                         e.preventDefault();

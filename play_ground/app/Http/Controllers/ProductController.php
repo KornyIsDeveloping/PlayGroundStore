@@ -122,27 +122,36 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product): RedirectResponse
     {
-        $validated = Validator::make($request->all(), [
+        // Validation rules including the image
+        $validatedData = $request->validate([
             'name' => 'required',
             'description' => 'required',
-            'price' => 'required',
+            'price' => 'required|numeric',
             'currency' => 'required',
-            'stock' => 'required',
-        ], []);
-
-        if ($validated->fails()) {
-            dd($validated->errors()->first());
-        }
-
-        $product->update([
-            'name' => $request->get('name'),
-            'description' => $request->get('description'),
-            'price' => $request->get('price'),
-            'currency' => $request->get('currency'),
-            'stock' => $request->get('stock'),
+            'stock' => 'required|integer',
+            'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:5120',
         ]);
 
-        return redirect()->route('products.index');
+        // Update non-image fields
+        $product->update($validatedData);
+
+        // Handle the image upload
+        if ($request->hasFile('image')) {
+            // Delete the old image if it exists
+            $existingImagePath = 'public/' . $product->image; // Path is relative to the "storage" folder
+            if (Storage::exists($existingImagePath)) {
+                Storage::delete($existingImagePath);
+            }
+
+            // Store the new image and update the product record
+            $path = $request->file('image')->store('images', 'public');
+            $product->image = basename($path); // Only save the filename, not the full path
+            $product->save(); // Save the product with the new image path
+        }
+
+        // Redirect back with success message
+        return redirect()->route('products.index')->with('success', 'Product updated successfully.');
+
     }
 
     public function destroy(Product $product): Application|\Illuminate\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector

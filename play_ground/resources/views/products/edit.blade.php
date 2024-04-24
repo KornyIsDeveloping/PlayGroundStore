@@ -3,7 +3,7 @@
     <x-slot:heading>
         Edit Game: {{ $product->name }}
     </x-slot:heading>
-    <form method="POST" action="{{ route('products.update', $product->id) }}">
+    <form method="POST" action="{{ route('products.update', $product->id) }}" enctype="multipart/form-data">
         @csrf
         @method('PATCH')
         <div class="space-y-12">
@@ -103,6 +103,11 @@
                             @enderror
                         </div>
                     </div>
+                </div>
+                <div class="mt-10">
+                    <x-form-lable for="image">Upload an Image</x-form-lable>
+                    <x-form-input type="file" name="image" id="image" required/>
+                    <x-form-error name="image"/>
                 </div>
             </div>
         </div>

@@ -4,29 +4,44 @@
         Games Page
     </x-slot:heading>
     <main>
-
-        <form class="max-w-md relative mb-10 ml-auto">
-            @csrf
-            <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
-            <div class="relative flex justify-end">
-                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                    <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                    </svg>
+        <div class="flex display-flex">
+            <form action="{{ route('products.index') }}" method="GET" class="max-w-md mb-10 ml-auto">
+                @csrf
+                <div class="flex space-x-4 justify-end">
+                    <div>
+                        <label for="min_price" class="block text-sm font-medium text-gray-900">Min Price:</label>
+                        <input type="number" name="min_price" id="min_price" value="{{ request('min_price') }}" class="mt-1 block w-full p-2 text-sm border-gray-300 rounded-md">
+                    </div>
+                    <div>
+                        <label for="max_price" class="block text-sm font-medium text-gray-900">Max Price:</label>
+                        <input type="number" name="max_price" id="max_price" value="{{ request('max_price') }}" class="mt-1 block w-full p-2 text-sm border-gray-300 rounded-md">
+                    </div>
+                    <div>
+                        <button type="submit" class="mt-5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 text-white font-medium rounded-lg text-sm px-4 py-2">Filter</button>
+                    </div>
                 </div>
-                <input value="{{ request()->get('name') ?? '' }}" type="search" id="default-search" name="name" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Search for a game..." />
-                <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">Search</button>
-            </div>
-        </form>
+            </form>
+
+            <form class="max-w-md relative mb-10 ml-auto">
+                @csrf
+                <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
+                <div class="relative flex justify-end">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                        <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                        </svg>
+                    </div>
+                    <input value="{{ request()->get('name') ?? '' }}" type="search" id="default-search" name="name" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Search for a game..." />
+                    <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">Search</button>
+                </div>
+            </form>
+        </div>
 
         <div class="grid grid-cols-3 gap-3">
             @foreach($products as $product)
                 <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                     <a href="{{ route('products.show', $product->id) }}">
-                        @foreach($products as $product)
-                            <img class="rounded-t-lg" src="{{ asset('storage/images/' . $product->image) }}" alt="Image of {{ $product->name }}">
-                        @endforeach
-
+                            <img class="rounded-t-lg" src="{{ asset($product->image) }}" alt="Image of {{ $product->name }}">
                     </a>
                     <div class="p-5">
                         <a href="#">

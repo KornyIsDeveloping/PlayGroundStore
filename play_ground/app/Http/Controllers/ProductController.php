@@ -9,6 +9,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Validator;
 
@@ -61,6 +62,7 @@ class ProductController extends Controller
                 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5120',
             ]);
 
+            $path = null;
             // If the validation is successful, handle the image file:
             if ($request->hasFile('image')) {
                 $path = $request->file('image')->store('images', 'public');
@@ -73,11 +75,11 @@ class ProductController extends Controller
                 'price' => $validatedData['price'],
                 'currency' => $validatedData['currency'],
                 'stock' => $validatedData['stock'],
-                'image' => $path ?? null, // Use the path if it's set, otherwise use null.
+                'image' => $path ? 'storage/' . $path : null,
             ]);
 
             // If you need to redirect after saving the product:
-            return redirect('/products')->with('success', 'Product created successfully.');
+            return redirect()->route('products.index')->with('success', 'Product created successfully.');
 
         } catch (\Illuminate\Validation\ValidationException $e) {
             return redirect()->back()->withErrors($e->validator)->withInput();

@@ -23,10 +23,10 @@
                     </div>
                     <div class="flex">
                         <span class="title-font font-medium text-2xl text-gray-900">{{ $product->price }} {{$product->currency}}</span>
-                        {{--                        <button type="submit" class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Add to cart</button>--}}
                         <button class="addButton inline-flex flex ml-auto items-center px-6 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" data-product-id="{{ $product->id }}">Add to cart</button>
                     </div>
                 </div>
+                <a href="{{ route('products.index') }}" type="button" class="text-red-400 text-sm font-bold mt-5">Back</a>
             </div>
         </div>
     </section>

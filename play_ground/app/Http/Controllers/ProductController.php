@@ -51,27 +51,37 @@ class ProductController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $validated = Validator::make($request->all(), [
-            'name' => 'required',
-            'description' => 'required',
-            'price' => 'required',
-            'currency' => 'required',
-            'stock' => 'required',
-        ], []);
+        try {
+            $validatedData = $request->validate([
+                'name' => 'required',
+                'description' => 'required',
+                'price' => 'required',
+                'currency' => 'required',
+                'stock' => 'required',
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5120',
+            ]);
 
-        if ($validated->fails()) {
-            dd($validated->errors()->first());
+            // If the validation is successful, handle the image file:
+            if ($request->hasFile('image')) {
+                $path = $request->file('image')->store('images', 'public');
+            }
+
+            // Now, use the $path variable to store the image path along with the other product information.
+            $product = Product::create([
+                'name' => $validatedData['name'],
+                'description' => $validatedData['description'],
+                'price' => $validatedData['price'],
+                'currency' => $validatedData['currency'],
+                'stock' => $validatedData['stock'],
+                'image' => $path ?? null, // Use the path if it's set, otherwise use null.
+            ]);
+
+            // If you need to redirect after saving the product:
+            return redirect('/products')->with('success', 'Product created successfully.');
+
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return redirect()->back()->withErrors($e->validator)->withInput();
         }
-
-        (new Product)->create([
-            'name' => $request->get('name'),
-            'description' => $request->get('description'),
-            'price' => $request->get('price'),
-            'currency' => $request->get('currency'),
-            'stock' => $request->get('stock'),
-        ]);
-
-        return redirect('/products');
     }
 
     /**

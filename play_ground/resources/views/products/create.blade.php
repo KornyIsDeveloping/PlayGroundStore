@@ -3,7 +3,7 @@
     <x-slot:heading>
         Add a game
     </x-slot:heading>
-    <form method="POST" action="/products">
+    <form method="POST" action="/products" enctype="multipart/form-data">
         @csrf
         <div class="space-y-12">
             <div class="border-b border-gray-900/10 pb-12">
@@ -14,7 +14,7 @@
                     <x-form-field>
                         <x-form-lable for="name">Name</x-form-lable>
                         <div class="mt-2">
-                            <x-form-input name="name" id="name" placeholder="Mortal Kombat 11" required/>
+                            <x-form-input name="name" id="name" placeholder="Mortal Kombat 11" :value="old('name')" required/>
 
                             <x-form-error name="name"/>
                         </div>
@@ -23,7 +23,7 @@
                     <x-form-field>
                         <x-form-lable for="description">Description</x-form-lable>
                         <div class="mt-2">
-                            <x-form-input name="description" id="description" placeholder="Some relevant information about your listing game..." required/>
+                            <x-form-input name="description" id="description" placeholder="Some relevant information about your listing game..." :value="old('description')" required/>
 
                             <x-form-error name="description"/>
                         </div>
@@ -32,7 +32,7 @@
                     <x-form-field>
                         <x-form-lable for="price">Price</x-form-lable>
                         <div class="mt-2">
-                            <x-form-input name="price" id="price" placeholder="30.99" required/>
+                            <x-form-input name="price" id="price" placeholder="30.99" :value="old('price')" required/>
 
                             <x-form-error name="price"/>
                         </div>
@@ -41,7 +41,7 @@
                     <x-form-field>
                         <x-form-lable for="currency">Currency</x-form-lable>
                         <div class="mt-2">
-                            <x-form-input name="currency" id="currency" placeholder="EUR/USD/RON" required/>
+                            <x-form-input name="currency" id="currency" placeholder="EUR/USD/RON" :value="old('currency')" required/>
 
                             <x-form-error name="currency"/>
                         </div>
@@ -50,11 +50,16 @@
                     <x-form-field>
                         <x-form-lable for="stock">Stock</x-form-lable>
                         <div class="mt-2">
-                            <x-form-input name="stock" id="stock" placeholder="10" required/>
-
+                            <x-form-input name="stock" id="stock" placeholder="10" :value="old('stock')" required/>
                             <x-form-error name="stock"/>
                         </div>
                     </x-form-field>
+                </div>
+
+                <div class="mt-10">
+                    <x-form-lable for="image">Upload an Image</x-form-lable>
+                    <x-form-input type="file" name="image" id="image" required/>
+                    <x-form-error name="image"/>
                 </div>
             </div>
         </div>

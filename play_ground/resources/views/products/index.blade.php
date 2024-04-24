@@ -22,8 +22,11 @@
         <div class="grid grid-cols-3 gap-3">
             @foreach($products as $product)
                 <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                    <a href="#">
-                        <img class="rounded-t-lg" src="" alt="image from database" />
+                    <a href="{{ route('products.show', $product->id) }}">
+                        @foreach($products as $product)
+                            <img class="rounded-t-lg" src="{{ asset('storage/images/' . $product->image) }}" alt="Image of {{ $product->name }}">
+                        @endforeach
+
                     </a>
                     <div class="p-5">
                         <a href="#">

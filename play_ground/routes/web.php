@@ -47,6 +47,8 @@ Route::post('/login', [SessionController::class, 'store'])->name('login');
 Route::post('/logout', [SessionController::class, 'destroy'])->name('logout');
 
 //edit path
+//Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->middleware('auth')->name('products.edit');
+Route::resource('products', ProductController::class)->names('products')->except(['edit']);
 Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->middleware('auth')->name('products.edit');
 
 //add to cart path

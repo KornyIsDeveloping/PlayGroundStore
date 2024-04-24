@@ -40,7 +40,7 @@
             @foreach($products as $product)
                 <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                     <a href="{{ route('products.show', $product->id) }}">
-                            <img class="rounded-t-lg" src="{{ asset($product->image) }}" alt="Image of {{ $product->name }}">
+                            <img class="rounded-t-lg w-full object-cover object-center" src="{{ asset($product->image) }}" alt="Image of {{ $product->name }}">
                     </a>
                     <div class="p-5">
                         <a href="#">

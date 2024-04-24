@@ -20,7 +20,7 @@
                             <tr>
                                 <td class="py-4">
                                     <div class="flex items-center">
-{{--                                        <img class="h-16 w-16 mr-4" src="https://via.placeholder.com/150" alt="Product image">--}}
+                                        <img class="h-16 w-16 mr-4" src="{{ asset($cart->product->image) }}" alt="{{ $cart->product->name }}">
                                         <span class="font-semibold">{{ $cart->product->name }}</span>
                                     </div>
                                 </td>

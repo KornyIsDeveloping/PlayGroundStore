@@ -21,7 +21,7 @@
                     <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
                     </div>
                     <div class="flex">
-                        <span class="title-font font-medium text-2xl text-gray-900">{{ $product->price }} {{$product->currency}}</span>
+                        <span class="addButton title-font font-medium text-2xl text-gray-900">{{ $product->price }} {{$product->currency}}</span>
                         <button type="submit" class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Add to cart</button>
                     </div>
                 </div>
@@ -29,3 +29,28 @@
         </div>
     </section>
 </x-layout>
+
+<script>
+    let addToCartRoute = @json(route('cart.add'))
+</script>
+
+<script>
+    addEventListener("DOMContentLoaded", (event) => {
+
+        $('.addButton').on('click', (e) => {
+            let productId = $(e.currentTarget).data('productId')
+
+            axios.post(addToCartRoute, {
+                productId
+            }).then(({data}) => {
+                console.log(data) //add red heart de adaugat clasa e.currentTarget.find si adaug clasa stilizata din css
+            }).catch(({response}) => {
+                console.log(response)
+            })
+        })
+
+    })
+    function myFunction() {
+        document.getElementById("demo").innerHTML = "Hello World";
+    }
+</script>

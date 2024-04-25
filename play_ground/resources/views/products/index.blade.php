@@ -17,7 +17,7 @@
                         <input type="number" name="max_price" id="max_price" value="{{ request('max_price') }}" class="mt-1 block w-full p-2 text-sm border-gray-300 rounded-md">
                     </div>
                     <div>
-                        <button type="submit" class="bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 text-white font-medium rounded-lg text-sm px-4 py-2">Filter</button>
+                        <button type="submit" class="mt-3 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 text-white font-medium rounded-lg text-sm px-4 py-2">Filter</button>
                     </div>
                 </div>
             </form>

@@ -72,7 +72,7 @@ class WishlistController extends Controller
      */
     public function remove($productId)
     {
-        $user = Auth::user(); // Assuming the user must be logged in to modify the wishlist
+        $user = Auth::user();
 
         // Delete the item from the wishlist
         Wishlist::where('user_id', $user->id)

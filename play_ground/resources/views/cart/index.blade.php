@@ -13,23 +13,27 @@
                             <tr>
                                 <th class="text-left font-semibold">Game</th>
                                 <th class="text-left font-semibold">Price</th>
+                                <th class="text-left font-semibold">Remove</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach( $carts as $cart)
-                            <tr>
-                                <td class="py-4">
-                                    <div class="flex items-center">
-                                        <img class="h-16 w-16 mr-4" src="{{ asset($cart->product->image) }}" alt="{{ $cart->product->name }}">
-                                        <span class="font-semibold">{{ $cart->product->name }}</span>
-                                    </div>
-                                </td>
-                                <td class="py-4">{{ $cart->product->price }} {{ $cart->product->currency }}</td>
-                                <td class="py-4">
-                                </td>
-                                <td class="py-4"></td>
-                            </tr>
-                            <!-- More product rows -->
+                                <tr>
+                                    <td class="py-4">
+                                        <div class="flex items-center">
+                                            <img class="h-16 w-16 mr-4" src="{{ asset($cart->product->image) }}" alt="{{ $cart->product->name }}">
+                                            <span class="font-semibold">{{ $cart->product->name }}</span>
+                                        </div>
+                                    </td>
+                                    <td class="py-4">{{ $cart->product->price }} {{ $cart->product->currency }}</td>
+                                    <td class="py-4">
+                                        <form action="{{ route('cart.remove', $cart->product->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="bg-red-500 text-white py-1 px-3 rounded hover:bg-red-600">Remove</button>
+                                        </form>
+                                    </td>
+                                </tr>
                             @endforeach
                             </tbody>
                         </table>

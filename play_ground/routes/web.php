@@ -50,6 +50,9 @@ Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->midd
 Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 
+//remove from the cart
+Route::delete('/cart/remove/{productId}', [CartController::class, 'remove'])->name('cart.remove');
+
 //search route
 Route::get('/search', [ProductController::class, 'search'])->name('product.search');
 

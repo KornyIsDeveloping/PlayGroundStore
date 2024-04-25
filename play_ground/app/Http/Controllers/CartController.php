@@ -56,6 +56,17 @@ class CartController extends Controller
         ], 401);
     }
 
+    public function remove($productId)
+    {
+        $user = Auth::user();
+
+        Cart::where('user_id', $user->id)
+            ->where('product_id', $productId)
+            ->delete();
+
+        return back()->with('success', 'Product removed from cart.');
+    }
+
     public function index()
     {
         $user = Auth::user();

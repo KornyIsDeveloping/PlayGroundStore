@@ -18,26 +18,21 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+//home
 Route::view('/', 'home')->name('home');
+
+//products
 Route::resource('products', ProductController::class)->names('products');
 
 //wishlist
 Route::post('/wishlist/add', [WishlistController::class, 'addToWishlist'])->name('wishlist.add');
 Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
 
+//remove from wishlist
+Route::delete('/wishlist/remove/{productId}', [WishlistController::class, 'remove'])->name('wishlist.remove');
 
 //contact
 Route::view('/contact', 'contact')->name('contact');
-
-//explicatii
-//Route::group(['prefix' => 'accounts', 'as' => 'account.'], function() {
-//    Route::resource('products', ProductController::class);
-//
-//    Route::get('/test', function () {
-//        dd('test');
-//    })->name('test');
-//});
 
 //login, register, logout
 Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
@@ -57,5 +52,17 @@ Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 
 //search route
 Route::get('/search', [ProductController::class, 'search'])->name('product.search');
+
+
+
+
+//explicatii
+//Route::group(['prefix' => 'accounts', 'as' => 'account.'], function() {
+//    Route::resource('products', ProductController::class);
+//
+//    Route::get('/test', function () {
+//        dd('test');
+//    })->name('test');
+//});
 
 

@@ -67,6 +67,22 @@ class WishlistController extends Controller
     }
 
     /**
+     * @param $productId
+     * @return RedirectResponse
+     */
+    public function remove($productId)
+    {
+        $user = Auth::user(); // Assuming the user must be logged in to modify the wishlist
+
+        // Delete the item from the wishlist
+        Wishlist::where('user_id', $user->id)
+            ->where('product_id', $productId)
+            ->delete();
+
+        return back()->with('success', 'Product removed from wishlist.');
+    }
+
+    /**
      * @return Application|Factory|View|\Illuminate\Foundation\Application
      */
     public function index()

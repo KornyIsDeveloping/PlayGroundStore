@@ -16,13 +16,14 @@ class CartController extends Controller
 
         //validare pe productId
         $validated = Validator::make($request->all(), [
-            'productId' => 'required',
+            'productId' => 'required|exists:products,id',
         ]);
 
         if ($validated->fails()) {
             return response()->json([
                 'status' => 'error',
                 'message' => 'Validation failed',
+                'errors' => $validated->errors()
             ], 401);
         }
 

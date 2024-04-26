@@ -18,14 +18,31 @@ class ProductController extends Controller
 
     public function index(Request $request)
     {
-        if ($name = $request->get('name')) {
-            $products = Product::query()->where('name', 'like', "%{$name}%")->get();
-        } else {
-            $products =  Product::all();
+//        if ($name = $request->get('name')) {
+//            $products = Product::query()->where('name', 'like', "%{$name}%")->get();
+//        } else {
+//            $products =  Product::all();
+//        }
+//
+//        return view('products.index', [
+//            'products' => $products
+//        ]);
+
+        $query = Product::query();
+
+        if ($request->has('name')) {
+            $query->where('name', 'like', '%' . $request->name . '%');
         }
 
+        if ($request->has('genre') && $request->genre !== 'all') {
+            $query->where('genre', $request->genre);
+        }
+
+        $products = $query->get();
+
         return view('products.index', [
-            'products' => $products
+            'products' => $products,
+            'selectedGenre' => $request->genre ?? 'all',
         ]);
     }
 
@@ -159,6 +176,4 @@ class ProductController extends Controller
         $product->delete();
         return redirect('/products');
     }
-
-
 }

@@ -5,23 +5,16 @@
     </x-slot:heading>
     <main>
         <div class="flex">
-            <form action="{{ route('products.index') }}" method="GET" class="max-w-md mr-auto flex-1">
+            <form class="max-w-md mb-10 ml-auto flex-1" method="GET" action="{{ route('products.index') }}">
                 @csrf
-                <div class="flex space-x-4 justify-end">
-                    <div>
-                        <label for="min_price" class="block text-sm font-medium text-gray-900">Min Price:</label>
-                        <input type="number" name="min_price" id="min_price" value="{{ request('min_price') }}" class="mt-1 block w-full p-2 text-sm border-gray-300 rounded-md">
-                    </div>
-                    <div>
-                        <label for="max_price" class="block text-sm font-medium text-gray-900">Max Price:</label>
-                        <input type="number" name="max_price" id="max_price" value="{{ request('max_price') }}" class="mt-1 block w-full p-2 text-sm border-gray-300 rounded-md">
-                    </div>
-                    <div>
-                        <button type="submit" class="mt-3 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 text-white font-medium rounded-lg text-sm px-4 py-2">Filter</button>
-                    </div>
-                </div>
+                <select name="genre" class="block w-full mt-4 p-3 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
+                    <option value="all">All Genres</option>
+                    @foreach(\App\Models\Product::select('genre')->distinct()->pluck('genre') as $genre)
+                        <option value="{{ $genre }}" {{ request()->genre == $genre ? 'selected' : '' }}>{{ ucfirst($genre) }}</option>
+                    @endforeach
+                </select>
+                <button type="submit" class="mt-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">Filter</button>
             </form>
-
             <form class="max-w-md mb-10 ml-auto flex-1">
                 @csrf
                 <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>

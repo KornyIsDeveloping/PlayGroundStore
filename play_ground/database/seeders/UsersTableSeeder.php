@@ -23,13 +23,15 @@ class UsersTableSeeder extends Seeder
                 'last_name' => 'Mass',
                 'email' => 'ejiro@example.com',
                 'password' => Hash::make('password'),
+                'is_admin' => false,
             ],
             [
                 'id' => Str::uuid()->toString(),
                 'first_name' => 'Luxor',
                 'last_name' => 'Ramazan',
                 'email' => 'luxor@example.com',
-                'password' => Hash::make('password'),
+                'password' => Hash::make('123456'),
+                'is_admin' => false,
             ],
             [
                 'id' => Str::uuid()->toString(),
@@ -37,13 +39,15 @@ class UsersTableSeeder extends Seeder
                 'last_name' => 'Mandi',
                 'email' => 'kaarina@example.com',
                 'password' => Hash::make('password'),
+                'is_admin' => false,
             ],
             [
                 'id' => Str::uuid()->toString(),
                 'first_name' => 'Kornuletz',
-                'last_name' => 'k',
+                'last_name' => 'Korny',
                 'email' => 'korny@example.com',
                 'password' => Hash::make('123456'),
+                'is_admin' => true,
             ],
         ]);
     }

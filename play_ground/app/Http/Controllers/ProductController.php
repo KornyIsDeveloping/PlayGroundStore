@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Validator;
+use Symfony\Component\HttpFoundation\Response;
 
 class ProductController extends Controller
 {
@@ -42,6 +43,10 @@ class ProductController extends Controller
      */
     public function create()
     {
+        if(auth()->user()?->first_name !== 'Kornuletz') {
+            abort(Response::HTTP_FORBIDDEN);
+        }
+
         return view('products.create');
     }
 

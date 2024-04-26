@@ -23,6 +23,7 @@ class ProductsTableSeeder extends Seeder
                 'currency' => 'EUR',
                 'stock' => 10,
                 'image' => 'zelda.jpeg',
+                'genre' => 'Action-Adventure',
             ],
             [
                 'id' => Str::uuid()->toString(),
@@ -32,6 +33,7 @@ class ProductsTableSeeder extends Seeder
                 'currency' => 'EUR',
                 'stock' => 15,
                 'image' => 'rdr2.jpeg',
+                'genre' => 'Action-Adventure',
             ],
             [
                 'id' => Str::uuid()->toString(),
@@ -41,6 +43,7 @@ class ProductsTableSeeder extends Seeder
                 'currency' => 'EUR',
                 'stock' => 8,
                 'image' => 'ac4.jpeg',
+                'genre' => 'Action-Adventure',
             ],
             [
                 'id' => Str::uuid()->toString(),
@@ -50,6 +53,7 @@ class ProductsTableSeeder extends Seeder
                 'currency' => 'EUR',
                 'stock' => 5,
                 'image' => 'es.jpeg',
+                'genre' => 'Role-Playing',
             ],
             [
                 'id' => Str::uuid()->toString(),
@@ -59,6 +63,7 @@ class ProductsTableSeeder extends Seeder
                 'currency' => 'EUR',
                 'stock' => 15,
                 'image' => 'pd.jpeg',
+                'genre' => 'Survival',
             ],
             [
                 'id' => Str::uuid()->toString(),
@@ -68,6 +73,7 @@ class ProductsTableSeeder extends Seeder
                 'currency' => 'EUR',
                 'stock' => 4,
                 'image' => 'gow.jpeg',
+                'genre' => 'Action-Adventure',
             ],
             [
                 'id' => Str::uuid()->toString(),
@@ -77,6 +83,7 @@ class ProductsTableSeeder extends Seeder
                 'currency' => 'EUR',
                 'stock' => 18,
                 'image' => 'sekiro.jpeg',
+                'genre' => 'Action-Adventure',
             ],
             [
                 'id' => Str::uuid()->toString(),
@@ -86,6 +93,7 @@ class ProductsTableSeeder extends Seeder
                 'currency' => 'EUR',
                 'stock' => 4,
                 'image' => 're4.jpeg',
+                'genre' => 'Survival Horror',
             ],
             [
                 'id' => Str::uuid()->toString(),
@@ -95,6 +103,7 @@ class ProductsTableSeeder extends Seeder
                 'currency' => 'EUR',
                 'stock' => 10,
                 'image' => 'hk.jpeg',
+                'genre' => 'Metroidvania',
             ],
             [
                 'id' => Str::uuid()->toString(),
@@ -104,6 +113,7 @@ class ProductsTableSeeder extends Seeder
                 'currency' => 'EUR',
                 'stock' => 20,
                 'image' => 'witcher3.jpeg',
+                'genre' => 'Role-Playing',
             ]
         ];
 

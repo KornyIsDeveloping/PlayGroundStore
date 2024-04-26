@@ -9,6 +9,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Validator;
@@ -43,10 +44,6 @@ class ProductController extends Controller
      */
     public function create()
     {
-        if(auth()->user()?->first_name !== 'Kornuletz') {
-            abort(Response::HTTP_FORBIDDEN);
-        }
-
         return view('products.create');
     }
 

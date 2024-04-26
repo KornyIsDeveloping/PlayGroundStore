@@ -42,6 +42,8 @@ Route::post('/login', [SessionController::class, 'store'])->name('login');
 Route::post('/logout', [SessionController::class, 'destroy'])->name('logout');
 
 //admin-only routes
+Route::get('admin/products/create', [ProductController::class, 'create'])->middleware('can:admin');
+Route::post('admin/products', [ProductController::class, 'store'])->middleware('can:admin');
 
 
 

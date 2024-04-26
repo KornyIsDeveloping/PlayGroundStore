@@ -18,15 +18,6 @@ class ProductController extends Controller
 
     public function index(Request $request)
     {
-//        if ($name = $request->get('name')) {
-//            $products = Product::query()->where('name', 'like', "%{$name}%")->get();
-//        } else {
-//            $products =  Product::all();
-//        }
-//
-//        return view('products.index', [
-//            'products' => $products
-//        ]);
 
         $query = Product::query();
 

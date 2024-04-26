@@ -21,7 +21,7 @@ class UsersTableSeeder extends Seeder
                 'id' => Str::uuid()->toString(),
                 'first_name' => 'Ejiro',
                 'last_name' => 'Mass',
-                'email' => 'Ejiro@example.com',
+                'email' => 'ejiro@example.com',
                 'password' => Hash::make('password'),
             ],
             [
@@ -40,10 +40,10 @@ class UsersTableSeeder extends Seeder
             ],
             [
                 'id' => Str::uuid()->toString(),
-                'first_name' => 'Lise',
-                'last_name' => 'Cathal',
-                'email' => 'lise@example.com',
-                'password' => Hash::make('password'),
+                'first_name' => 'Kornuletz',
+                'last_name' => 'k',
+                'email' => 'korny@example.com',
+                'password' => Hash::make('123456'),
             ],
         ]);
     }

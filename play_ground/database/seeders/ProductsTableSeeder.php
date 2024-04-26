@@ -126,6 +126,7 @@ class ProductsTableSeeder extends Seeder
                 'currency' => $product['currency'],
                 'stock' => $product['stock'],
                 'image' => $product['image'],
+                'genre' => $product['genre'],
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

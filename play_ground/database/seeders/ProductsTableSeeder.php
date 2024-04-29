@@ -114,6 +114,16 @@ class ProductsTableSeeder extends Seeder
                 'stock' => 20,
                 'image' => 'witcher3.jpeg',
                 'genre' => 'Role-Playing',
+            ],
+            [
+                'id' => Str::uuid()->toString(),
+                'name' => 'Hogwarts Legacy',
+                'description' => 'Hogwarts Legacy is a 2023 action role-playing game developed by Avalanche Software and published by Warner Bros. The game is part of the Wizarding World franchise. Available on PS5, Nintendo Switch, PS4, Windows.',
+                'price' => 59.99,
+                'currency' => 'EUR',
+                'stock' => 10,
+                'image' => 'hl.jpeg',
+                'genre' => 'Role-Playing',
             ]
         ];
 

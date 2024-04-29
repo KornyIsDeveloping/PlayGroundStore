@@ -78,36 +78,10 @@
     </main>
 </x-layout>
 
-{{--<script>--}}
-{{--    let addToWishListRoute = @json(route('wishlist.add'))--}}
-{{--</script>--}}
-
-{{--<script>--}}
-{{--    addEventListener("DOMContentLoaded", (event) => {--}}
-
-{{--        $('.addButton').on('click', (e) => {--}}
-{{--            let productId = $(e.currentTarget).data('productId')--}}
-
-{{--            axios.post(addToWishListRoute, {--}}
-{{--                productId--}}
-{{--            }).then(({data}) => {--}}
-{{--                console.log(data) //add red heart de adaugat clasa e.currentTarget.find si adaug clasa stilizata din css--}}
-{{--            }).catch(({response}) => {--}}
-{{--                console.log(response)--}}
-{{--            })--}}
-{{--        })--}}
-
-{{--    })--}}
-{{--    function myFunction() {--}}
-{{--        document.getElementById("demo").innerHTML = "Korny was here!";--}}
-{{--    }--}}
-{{--</script>--}}
-
 <script>
     let addToWishListRoute = @json(route('wishlist.add'));
 
     document.addEventListener("DOMContentLoaded", () => {
-        // Use jQuery to attach a click event to all addButton elements
         $('.addButton').on('click', function(e) {
             let productId = $(this).data('productId');
             let button = $(this);
@@ -116,18 +90,14 @@
                 productId: productId
             }).then(({data}) => {
                 if(data.status === 'success') {
-                    // If the product was successfully added, show a success message
                     Swal.fire({
                         title: "Success!",
                         text: data.message,
                         icon: "success"
                     }).then(() => {
-                        // Change the icon to a red heart or another indication for added to wishlist
-                        // $(this).addClass('wishlist-added'); // Make sure you define the .wishlist-added class in your CSS
                         button.find('svg').addClass('wishlist-added');
                     });
                 } else {
-                    // If the server responds but the product wasn't added, show an error message
                     Swal.fire({
                         title: "Error!",
                         text: data.message,
@@ -135,7 +105,6 @@
                     });
                 }
             }).catch(({response}) => {
-                // This will capture any errors not caught by server-side validation
                 Swal.fire({
                     title: "Error!",
                     text: response.data.message || "An error occurred while trying to add the product to your wishlist.",

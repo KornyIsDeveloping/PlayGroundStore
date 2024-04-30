@@ -66,8 +66,7 @@ Route::get('/comments', [CommentController::class, 'index'])->name('comments.ind
 Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 Route::post('/comments', [CommentController::class, 'store'])->middleware('auth')->name('comments.store');
-
-
+Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
 
 //explicatii
 //Route::group(['prefix' => 'accounts', 'as' => 'account.'], function() {

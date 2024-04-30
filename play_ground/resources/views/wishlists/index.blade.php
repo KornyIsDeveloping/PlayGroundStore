@@ -4,7 +4,7 @@
 
     <h1 class="dark:text-custom-dark-text text-2xl font-semibold mb-4">Your Wishlist</h1>
     @foreach($wishlists as $wishlist)
-        <div class="py-8">
+        <div class="h-screen py-8">
             <div class="container mx-auto px-4">
                 <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-4">
                     <table class="w-full">

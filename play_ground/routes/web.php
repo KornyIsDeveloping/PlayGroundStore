@@ -46,7 +46,6 @@ Route::post('/logout', [SessionController::class, 'destroy'])->name('logout');
 Route::get('admin/products/create', [ProductController::class, 'create'])->middleware('can:admin');
 Route::post('admin/products', [ProductController::class, 'store'])->middleware('can:admin');
 
-
 //edit path
 //Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->middleware('auth')->name('products.edit');
 Route::resource('products', ProductController::class)->names('products')->except(['edit']);
@@ -66,6 +65,9 @@ Route::get('/search', [ProductController::class, 'search'])->name('product.searc
 Route::get('/comments', [CommentController::class, 'index'])->name('comments.index');
 Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
+Route::post('/comments', [CommentController::class, 'store'])->middleware('auth')->name('comments.store');
+
+
 
 //explicatii
 //Route::group(['prefix' => 'accounts', 'as' => 'account.'], function() {

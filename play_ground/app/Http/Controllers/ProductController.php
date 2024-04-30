@@ -53,24 +53,6 @@ class ProductController extends Controller
      */
     public function show(Product $product): Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|Application
     {
-//        return view('products.show', ['product'=>$product]);
-//        $product = Product::with('comments')->findOrFail($product);
-//        return view('products.show', ['product' => $product, 'comments' => $product->comments]);
-//        $product->load('comments');
-//        return view('products.show', ['product' => $product, 'comments' => $product->comments]);
-//        if (!$product->relationLoaded('comments')) {
-//            $product->load('comments');
-//        }
-//
-//        return view('products.show', ['product' => $product, 'comments' => $product->comments]);
-
-//        $product->load('comments'); // Make sure comments are loaded
-//
-//        return view('products.show', [
-//            'product' => $product,
-//            'comments' => $product->comments
-//        ]);
-
         $comments = $product->comments()->latest()->get(); // Assuming a one-to-many relationship is defined on the Product model
 
         return view('products.show', compact('product', 'comments'));

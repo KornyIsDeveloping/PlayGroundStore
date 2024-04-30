@@ -10,7 +10,7 @@ class CommentController extends Controller
     public function index()
     {
         $comments = Comment::latest()->get();
-        return view('comments.index', compact('comments'));
+        return view('products.show', compact('comments'));
     }
 
     public function store(Request $request)

@@ -114,4 +114,9 @@ protected $guarded = [];
     {
         return $this->hasMany(Order::class);
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

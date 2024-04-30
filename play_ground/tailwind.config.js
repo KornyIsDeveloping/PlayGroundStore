@@ -15,9 +15,10 @@ module.exports = {
                 'text': '#1d2742',
             },
             'custom-dark': {
-                DEFAULT: '#1d2742',
+                DEFAULT: '#121826',
                 'button': '#f08f7b',
-                'text': '#f4f4fb',
+                'text': '#E0E0E0',
+                'boxes': '#424242',
             }
         }
     },

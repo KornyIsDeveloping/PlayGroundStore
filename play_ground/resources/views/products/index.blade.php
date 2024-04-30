@@ -8,7 +8,7 @@
             <form class="max-w-md mb-10 mr-auto flex-1" method="GET" action="{{ route('products.index') }}">
                 @csrf
                 <select name="genre" class="block w-full p-3 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
-                    <option value="all">All Genres</option>
+                    <option value="all">Select a genre</option>
                     @foreach(\App\Models\Product::select('genre')->distinct()->pluck('genre') as $genre)
                         <option value="{{ $genre }}" {{ request()->genre == $genre ? 'selected' : '' }}>{{ ucfirst($genre) }}</option>
                     @endforeach

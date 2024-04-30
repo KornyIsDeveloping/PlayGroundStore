@@ -60,8 +60,9 @@ class Product extends Model
         return $this->hasMany(OrderItem::class);
     }
 
-    public function media(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function comments()
     {
-        return $this->hasMany(Media::class);
+        return $this->hasMany(Comment::class);
     }
+
 }

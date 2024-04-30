@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
@@ -46,7 +47,6 @@ Route::get('admin/products/create', [ProductController::class, 'create'])->middl
 Route::post('admin/products', [ProductController::class, 'store'])->middleware('can:admin');
 
 
-
 //edit path
 //Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->middleware('auth')->name('products.edit');
 Route::resource('products', ProductController::class)->names('products')->except(['edit']);
@@ -62,8 +62,10 @@ Route::delete('/cart/remove/{productId}', [CartController::class, 'remove'])->na
 //search route
 Route::get('/search', [ProductController::class, 'search'])->name('product.search');
 
-
-
+//comments section
+Route::get('/comments', [CommentController::class, 'index'])->name('comments.index');
+Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
+Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 
 //explicatii
 //Route::group(['prefix' => 'accounts', 'as' => 'account.'], function() {

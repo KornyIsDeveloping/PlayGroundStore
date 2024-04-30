@@ -19,7 +19,7 @@
                 <div class="flex h-16 items-center justify-between">
                     <div class="flex items-center">
                         <div class="flex-shrink-0">
-                            <img class="h-8 w-8" src="https://laracasts.com/images/lary-ai-face.svg" alt="Laracasts">
+                            <img class="h-8 w-8" src="https://img.freepik.com/premium-vector/stick-controller-art_262962-275.jpg" alt="Game controller">
                         </div>
                         <div class="hidden md:block">
                             <div class="ml-10 flex items-baseline space-x-4">

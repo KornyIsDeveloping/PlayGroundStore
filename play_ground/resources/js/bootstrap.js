@@ -3,14 +3,36 @@
  * to our Laravel back-end. This library automatically handles sending the
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
-
 import axios from 'axios';
 window.axios = axios;
+import Pusher from 'pusher-js';
+window.Pusher = Pusher;
+
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
-import $ from 'jquery'
-window.jQuery = window.$ = $
+// import $ from 'jquery'
+// window.jQuery = window.$ = $
+//
+//
+// window.Pusher = require('pusher-js');
+
+import Echo from 'laravel-echo';
+
+window.Echo = new Echo({
+    broadcaster: 'pusher',
+    key: import.meta.env.VITE_PUSHER_APP_KEY,
+    cluster: import.meta.env.VITE_PUSHER_APP_CLUSTER,
+    forceTLS: true
+});
+
+// window.Pusher = require('pusher-js');
+//
+// window.Echo = new Echo({
+//     broadcaster: 'pusher',
+//     key: 'your-pusher-key'
+// });
+
 
 
 /**

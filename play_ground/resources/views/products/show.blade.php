@@ -6,23 +6,23 @@
     </x-slot:heading>
     {{-- after you click on a  product from the game page --}}
     <!-- component -->
-    <section class="text-gray-700 body-font overflow-hidden bg-white">
-        <div class="container px-5 py-24 mx-auto">
+    <section class="bg-custom-light dark:bg-custom-dark text-gray-700 body-font overflow-hidden bg-white">
+        <div class="bg-custom-light dark:bg-custom-dark container px-5 py-24 mx-auto">
             <div class="lg:w-4/5 mx-auto flex flex-wrap">
                 <img alt="{{ $product->name }}" class="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200" src="{{ asset($product->image) }}">
                 <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-                    <h2 class="text-sm title-font text-gray-500 tracking-widest">YOUR SELECTED GAME</h2>
-                    <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">{{$product->name}}</h1>
+                    <h2 class="text-sm title-font text-gray-500 dark:text-custom-dark-text tracking-widest">YOUR SELECTED GAME</h2>
+                    <h1 class="text-gray-900 dark:text-custom-dark-text text-3xl title-font font-medium mb-1">{{$product->name}}</h1>
                     <div class="flex mb-4">
                     </div>
                     <div class="flex display-flex justify-between">
-                        <p class="leading-relaxed">{{ $product->description }}</p>
+                        <p class="dark:text-custom-dark-text leading-relaxed">{{ $product->description }}</p>
                     </div>
-                    <p class="leading-relaxed">Only {{ $product->stock }} left</p>
-                    <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
+                    <p class="dark:text-custom-dark-text leading-relaxed">Only {{ $product->stock }} left</p>
+                    <div class="bg-custom-light dark:bg-custom-dark flex mt-6 items-center pb-5 border-b-2 mb-5">
                     </div>
                     <div class="flex">
-                        <span class="title-font font-medium text-2xl text-gray-900">{{ $product->price }} {{$product->currency}}</span>
+                        <span class="dark:text-custom-dark-text title-font font-medium text-2xl text-gray-900">{{ $product->price }} {{$product->currency}}</span>
                         <button class="addButton inline-flex ml-auto items-center px-6 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" data-product-id="{{ $product->id }}">Add to cart</button>
                     </div>
                 </div>
@@ -30,8 +30,8 @@
             </div>
         </div>
     </section>
-    
-    <section class="bg-white dark:bg-gray-900 py-8 lg:py-16 antialiased">
+
+    <section class="bg-white dark:bg-custom-dark py-8 lg:py-16 antialiased">
         <div class="max-w-2xl mx-auto px-4">
             <div class="flex justify-between items-center mb-6">
                 <h2 class="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">Discussion ({{ $comments->count() }})</h2>
@@ -46,7 +46,7 @@
                 <button type="submit" class="inline-flex ml-auto items-center px-6 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Post comment</button>
             </form>
             @foreach ($comments as $comment)
-                <article class="p-6 text-base bg-white rounded-lg dark:bg-gray-900 mb-4">
+                <article class="p-6 text-base bg-white rounded-lg dark:bg-custom-dark mb-4">
                     <footer class="flex justify-between items-center mb-2">
                         <div class="flex items-center">
                             <img class="mr-2 w-6 h-6 rounded-full" src="{{ $comment->user->profile_picture ?? 'https://c4.wallpaperflare.com/wallpaper/702/705/75/rocket-raccoon-baby-groot-artwork-hd-wallpaper-preview.jpg' }}" alt="{{ $comment->user->first_name }} {{ $comment->user->last_name }}">

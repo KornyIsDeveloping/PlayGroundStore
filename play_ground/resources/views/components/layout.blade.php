@@ -14,7 +14,7 @@
     </head>
     <body class="h-full">
     <div class="min-h-full">
-        <nav class="bg-gray-800">
+        <nav class="bg-custom-light dark:bg-custom-dark">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="flex h-16 items-center justify-between">
                     <div class="flex items-center">
@@ -109,25 +109,18 @@
         </nav>
 
         <header class="bg-white shadow">
-            <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 sm:flex sm:justify-between">
-                <h1 class="text-3xl font-bold tracking-tight text-gray-900">{{ $heading }}</h1>
+            <div class="bg-custom-light dark:bg-custom-dark mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 sm:flex sm:justify-between">
+                <h1 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-custom-dark-text">{{ $heading }}</h1>
                 @admin
                     <x-button href="/products/create">Add a new Game</x-button>
                 @endadmin
             </div>
         </header>
         <main>
-            <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+            <div class="bg-custom-light dark:bg-custom-dark mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
                 {{ $slot }}
             </div>
         </main>
     </div>
     </body>
 </html>
-
-<script>
-
-</script>
-<script>
-
-</script>

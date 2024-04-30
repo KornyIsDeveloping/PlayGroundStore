@@ -29,7 +29,7 @@
                                         <form action="{{ route('cart.remove', $cart->product->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="bg-red-500 text-white py-1 px-3 rounded hover:bg-red-600">Remove</button>
+                                            <button type="submit" class="bg-indigo-600 text-white py-1 px-3 rounded hover:bg-indigo-600">Remove</button>
                                         </form>
                                     </td>
                                 </tr>

@@ -108,7 +108,7 @@
             </div>
         </nav>
 
-        <header class="bg-white shadow">
+        <header class="bg-custom-light dark:bg-custom-dark">
             <div class="bg-custom-light dark:bg-custom-dark mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 sm:flex sm:justify-between">
                 <h1 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-custom-dark-text">{{ $heading }}</h1>
                 @admin
@@ -116,7 +116,7 @@
                 @endadmin
             </div>
         </header>
-        <main>
+        <main class="bg-custom-light dark:bg-custom-dark">
             <div class="bg-custom-light dark:bg-custom-dark mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
                 {{ $slot }}
             </div>

@@ -13,7 +13,7 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         @vite(['resources/js/app.js','resources/js/toggler.js', 'resources/css/app.css'])
     </head>
-    <body class="h-full">
+    <body class="h-full dark:bg-custom-dark">
     <div class="min-h-full">
         <nav class="bg-custom-light dark:bg-custom-dark">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

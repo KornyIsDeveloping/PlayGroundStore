@@ -4,7 +4,6 @@ return [
     'images' => [
         'The Legend of Zelda: Breath of the Wild' => 'zelda.jpeg',
         'Red Dead Redemption 2' => 'rdr2.jpeg',
-        // Add more mappings for each product
         "Assassin's Creed IV: Black Flag" => 'ac4.jpeg',
         'The Elder Scrolls V: Skyrim Special Edition' => 'es.jpeg',
         'Pacific Drive' => 'pd.jpeg',

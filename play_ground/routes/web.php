@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\WishlistController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
@@ -67,6 +69,12 @@ Route::post('/comments', [CommentController::class, 'store'])->name('comments.st
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 Route::post('/comments', [CommentController::class, 'store'])->middleware('auth')->name('comments.store');
 Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
+
+//update stats
+Route::get('/dashboard', [DashboardController::class, 'showDashboard'])->name('dashboard.show')->middleware('auth');
+Route::post('/users', [UserController::class, 'store'])->name('users.store')->middleware('auth');
+
+
 
 //explicatii
 //Route::group(['prefix' => 'accounts', 'as' => 'account.'], function() {

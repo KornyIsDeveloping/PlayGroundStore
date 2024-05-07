@@ -18,7 +18,7 @@
                         <div class="px-4 py-5 sm:p-6">
                             <dl>
                                 <dt class="text-sm leading-5 font-medium text-gray-500 truncate dark:text-gray-400">Total users</dt>
-                                <dd id="totalUsers" class="mt-1 text-3xl leading-9 font-semibold text-indigo-600 dark:text-indigo-400"></dd>
+                                <dd id="totalUsers" class="mt-1 text-3xl leading-9 font-semibold text-indigo-600 dark:text-indigo-400">Loading...</dd>
                             </dl>
                         </div>
                     </div>
@@ -27,7 +27,7 @@
                         <div class="px-4 py-5 sm:p-6">
                             <dl>
                                 <dt class=" text-sm leading-5 font-medium text-gray-500 truncate dark:text-gray-400">Our games</dt>
-                                <dd id="totalProducts" class="mt-1 text-3xl leading-9 font-semibold text-indigo-600 dark:text-indigo-400"></dd>
+                                <dd id="totalProducts" class="mt-1 text-3xl leading-9 font-semibold text-indigo-600 dark:text-indigo-400">Loading...</dd>
                             </dl>
                         </div>
                     </div>
@@ -36,7 +36,7 @@
                         <div class="px-4 py-5 sm:p-6">
                             <dl>
                                 <dt class="text-sm leading-5 font-medium text-gray-500 truncate dark:text-gray-400">Last added games</dt>
-                                <dd id="recentProducts" class="mt-1 text-3xl leading-9 font-semibold text-indigo-600 dark:text-indigo-400"></dd>
+                                <dd id="recentProducts" class="mt-1 text-3xl leading-9 font-semibold text-indigo-600 dark:text-indigo-400">Loading...</dd>
                             </dl>
                         </div>
                     </div>
@@ -46,7 +46,7 @@
                             <dl>
                                 <dt class="text-sm leading-5 font-medium text-gray-500 truncate dark:text-gray-400">Comments
                                 </dt>
-                                <dd id="totalComments" class="mt-1 text-3xl leading-9 font-semibold text-indigo-600 dark:text-indigo-400"></dd>
+                                <dd id="totalComments" class="mt-1 text-3xl leading-9 font-semibold text-indigo-600 dark:text-indigo-400">Loading...</dd>
                             </dl>
                         </div>
                     </div>

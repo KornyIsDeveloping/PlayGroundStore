@@ -66,39 +66,6 @@ class ProductController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-//        try {
-//            $validatedData = $request->validate([
-//                'name' => 'required',
-//                'description' => 'required',
-//                'price' => 'required',
-//                'currency' => 'required',
-//                'stock' => 'required',
-//                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5120',
-//            ]);
-//
-//            $path = null;
-//            // If the validation is successful, handle the image file:
-//            if ($request->hasFile('image')) {
-//                $path = $request->file('image')->store('images', 'public');
-//            }
-//
-//            // Now, use the $path variable to store the image path along with the other product information.
-//            $product = Product::create([
-//                'name' => $validatedData['name'],
-//                'description' => $validatedData['description'],
-//                'price' => $validatedData['price'],
-//                'currency' => $validatedData['currency'],
-//                'stock' => $validatedData['stock'],
-//                'image' => $path ? 'storage/' . $path : null,
-//            ]);
-//
-//            // If you need to redirect after saving the product:
-//            return redirect()->route('products.index')->with('success', 'Product created successfully.');
-//
-//        } catch (\Illuminate\Validation\ValidationException $e) {
-//            return redirect()->back()->withErrors($e->validator)->withInput();
-//        }
-
         try {
             $validatedData = $request->validate([
                 'name' => 'required',

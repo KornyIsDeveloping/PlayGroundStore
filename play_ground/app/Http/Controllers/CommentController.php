@@ -18,15 +18,6 @@ class CommentController extends Controller
 
     public function store(Request $request)
     {
-//        $request->validate(['body' => 'required']);
-//        Comment::create([
-//            'body' => $request->body,
-//            'user_id' => auth()->id(),
-//            'product_id' => $request->product_id,
-//        ]);
-//
-//        return back();
-
         $request->validate([
             'body' => 'required',
             'product_id' => 'required'

@@ -13,5 +13,6 @@ return [
         'Hollow Knight' => 'hk.jpeg',
         'The Witcher 3: Wild Hunt' => 'witcher3.jpeg',
         'Hogwarts Legacy' => 'hl.jpeg',
+        'Magicka 2' => 'm2.jpeg',
     ],
 ];

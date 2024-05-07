@@ -91,14 +91,14 @@ class ProductController extends Controller
             ]);
 
             // After saving the product, update and dispatch stats
-            $stats = [
-                'totalUsers' => User::count(),
-                'totalProducts' => Product::count(),
-                'recentProducts' => Product::where('created_at', '>=', now()->subDays(30))->count(),
-                'totalComments' => Comment::count(),
-            ];
-
-            event(new StatsUpdated($stats));
+//            $stats = [
+//                'totalUsers' => User::count(),
+//                'totalProducts' => Product::count(),
+//                'recentProducts' => Product::where('created_at', '>=', now()->subDays(30))->count(),
+//                'totalComments' => Comment::count(),
+//            ];
+//
+//            event(new StatsUpdated($stats));
 
             // Redirect with success message
             return redirect()->route('products.index')->with('success', 'Product created successfully.');

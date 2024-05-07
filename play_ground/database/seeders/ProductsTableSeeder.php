@@ -139,6 +139,17 @@ class ProductsTableSeeder extends Seeder
 //                'image' => 'hl.jpeg',
                 'image' => config('productsimages.images.' . 'Hogwarts Legacy', 'default.jpg'),
                 'genre' => 'Role-Playing',
+            ],
+            [
+            'id' => Str::uuid()->toString(),
+            'name' => 'Magicka 2',
+            'description' => 'Magicka is an action-adventure game developed by Arrowhead Game Studios. Magicka is based on Norse mythology. Available on Windows.',
+            'price' => 14.99,
+            'currency' => 'EUR',
+            'stock' => 10,
+//                'image' => 'm2.jpeg',
+            'image' => config('productsimages.images.' . 'Magicka 2', 'default.jpg'),
+            'genre' => 'Action-Adventure',
             ]
         ];
 

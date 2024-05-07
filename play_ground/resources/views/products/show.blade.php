@@ -31,7 +31,7 @@
         </div>
     </section>
 
-    <section class="bg-white dark:bg-custom-dark py-8 lg:py-16 antialiased">
+    <section class="bg-custom-light dark:bg-custom-dark py-8 lg:py-16 antialiased">
         <div class="max-w-2xl mx-auto px-4">
             <div class="flex justify-between items-center mb-6">
                 <h2 class="text-lg lg:text-2xl font-bold text-gray-900 dark:text-gray-300">Discussion ({{ $comments->count() }})</h2>

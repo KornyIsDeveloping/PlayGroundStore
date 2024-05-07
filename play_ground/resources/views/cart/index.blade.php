@@ -20,7 +20,7 @@
                                 <tr>
                                     <td class="py-4">
                                         <div class="flex items-center">
-                                            <img class="dark:text-custom-dark-text h-16 w-16 mr-4" src="{{ asset($cart->product->image) }}" alt="{{ $cart->product->name }}">
+                                            <img class="dark:text-custom-dark-text h-16 w-16 mr-4" src="{{ asset('storage/images/' . $cart->product->image) }}" alt="{{ $cart->product->name }}">
                                             <span class="dark:text-custom-dark-text font-semibold">{{ $cart->product->name }}</span>
                                         </div>
                                     </td>

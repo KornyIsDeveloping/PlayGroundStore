@@ -21,7 +21,7 @@
                             <tr>
                                 <td class="py-4">
                                     <div class="flex items-center">
-                                        <img class="dark:text-custom-dark-text h-16 w-16 mr-4" src="{{ asset($wishlist->product->image) }}" alt="Image of {{ $wishlist->product->name }}">
+                                        <img class="dark:text-custom-dark-text h-16 w-16 mr-4" src="{{ asset('storage/images/' . $wishlist->product->image) }}" alt="Image of {{ $wishlist->product->name }}">
                                         <span class="dark:text-custom-dark-text font-semibold">{{ $wishlist->product->name }}</span>
                                     </div>
                                 </td>

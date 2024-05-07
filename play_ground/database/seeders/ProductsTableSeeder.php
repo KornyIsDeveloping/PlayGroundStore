@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
 class ProductsTableSeeder extends Seeder
@@ -14,6 +15,9 @@ class ProductsTableSeeder extends Seeder
      */
     public function run(): void
     {
+//        $imageDirectory = storage_path('app/public/images');
+//        $files = File::files($imageDirectory);
+
         $products = [
             [
                 'id' => Str::uuid()->toString(),
@@ -22,7 +26,8 @@ class ProductsTableSeeder extends Seeder
                 'price' => 30.09,
                 'currency' => 'EUR',
                 'stock' => 10,
-                'image' => 'zelda.jpeg',
+//                'image' => 'zelda.jpeg',
+                'image' => config('productsimages.images.' . 'The Legend of Zelda: Breath of the Wild', 'default.jpg'),
                 'genre' => 'Action-Adventure',
             ],
             [
@@ -32,7 +37,8 @@ class ProductsTableSeeder extends Seeder
                 'price' => 59.99,
                 'currency' => 'EUR',
                 'stock' => 15,
-                'image' => 'rdr2.jpeg',
+//                'image' => 'rdr2.jpeg',
+                'image' => config('productsimages.images.' . 'Red Dead Redemption 2', 'default.jpg'),
                 'genre' => 'Action-Adventure',
             ],
             [
@@ -42,7 +48,8 @@ class ProductsTableSeeder extends Seeder
                 'price' => 39.99,
                 'currency' => 'EUR',
                 'stock' => 8,
-                'image' => 'ac4.jpeg',
+//                'image' => 'ac4.jpeg',
+                'image' => config('productsimages.images.' . "Assassin's Creed IV: Black Flag", 'default.jpg'),
                 'genre' => 'Action-Adventure',
             ],
             [
@@ -52,7 +59,8 @@ class ProductsTableSeeder extends Seeder
                 'price' => 39.99,
                 'currency' => 'EUR',
                 'stock' => 5,
-                'image' => 'es.jpeg',
+//                'image' => 'es.jpeg',
+                'image' => config('productsimages.images.' . 'The Elder Scrolls V: Skyrim Special Edition', 'default.jpg'),
                 'genre' => 'Role-Playing',
             ],
             [
@@ -62,7 +70,8 @@ class ProductsTableSeeder extends Seeder
                 'price' => 23.99,
                 'currency' => 'EUR',
                 'stock' => 15,
-                'image' => 'pd.jpeg',
+//                'image' => 'pd.jpeg',
+                'image' => config('productsimages.images.' . 'Pacific Drive', 'default.jpg'),
                 'genre' => 'Survival',
             ],
             [
@@ -72,7 +81,8 @@ class ProductsTableSeeder extends Seeder
                 'price' => 49.99,
                 'currency' => 'EUR',
                 'stock' => 4,
-                'image' => 'gow.jpeg',
+//                'image' => 'gow.jpeg',
+                'image' => config('productsimages.images.' . 'God of War', 'default.jpg'),
                 'genre' => 'Action-Adventure',
             ],
             [
@@ -82,7 +92,8 @@ class ProductsTableSeeder extends Seeder
                 'price' => 59.99,
                 'currency' => 'EUR',
                 'stock' => 18,
-                'image' => 'sekiro.jpeg',
+//                'image' => 'sekiro.jpeg',
+                'image' => config('productsimages.images.' . 'Sekiro: Shadows Die Twice', 'default.jpg'),
                 'genre' => 'Action-Adventure',
             ],
             [
@@ -92,7 +103,8 @@ class ProductsTableSeeder extends Seeder
                 'price' => 39.99,
                 'currency' => 'EUR',
                 'stock' => 4,
-                'image' => 're4.jpeg',
+//                'image' => 're4.jpeg',
+                'image' => config('productsimages.images.' . 'Resident Evil 4', 'default.jpg'),
                 'genre' => 'Survival Horror',
             ],
             [
@@ -102,7 +114,8 @@ class ProductsTableSeeder extends Seeder
                 'price' => 14.99,
                 'currency' => 'EUR',
                 'stock' => 10,
-                'image' => 'hk.jpeg',
+//                'image' => 'hk.jpeg',
+                'image' => config('productsimages.images.' . 'Hollow Knight', 'default.jpg'),
                 'genre' => 'Metroidvania',
             ],
             [
@@ -112,7 +125,8 @@ class ProductsTableSeeder extends Seeder
                 'price' => 39.99,
                 'currency' => 'EUR',
                 'stock' => 20,
-                'image' => 'witcher3.jpeg',
+//                'image' => 'witcher3.jpeg',
+                'image' => config('productsimages.images.' . 'The Witcher 3: Wild Hunt', 'default.jpg'),
                 'genre' => 'Role-Playing',
             ],
             [
@@ -122,7 +136,8 @@ class ProductsTableSeeder extends Seeder
                 'price' => 59.99,
                 'currency' => 'EUR',
                 'stock' => 10,
-                'image' => 'hl.jpeg',
+//                'image' => 'hl.jpeg',
+                'image' => config('productsimages.images.' . 'Hogwarts Legacy', 'default.jpg'),
                 'genre' => 'Role-Playing',
             ]
         ];

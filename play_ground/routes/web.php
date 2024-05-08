@@ -61,7 +61,10 @@ Route::middleware('auth')->group(function () {
 });
 
 //contact
-Route::view('/contact', 'contact')->name('contact');
 Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
+Route::get('/contact', [ContactController::class, 'show'])->name('contact.show');
+Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
+Route::view('/contact', 'contact')->name('contact');
+
 
 

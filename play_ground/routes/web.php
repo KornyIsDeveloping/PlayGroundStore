@@ -2,6 +2,7 @@
 //
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisteredUserController;
@@ -61,4 +62,6 @@ Route::middleware('auth')->group(function () {
 
 //contact
 Route::view('/contact', 'contact')->name('contact');
+Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
+
 

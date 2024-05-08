@@ -10,7 +10,8 @@
             <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-custom-dark-text sm:text-4xl">Contact Play Ground Store</h2>
             <p class="mt-2 text-lg leading-8 text-gray-600">Something will be here</p>
         </div>
-        <form action="#" method="POST" class="mx-auto mt-16 max-w-xl sm:mt-20">
+        <form method="POST" action="{{ route('contact.send') }}" class="mx-auto mt-16 max-w-xl sm:mt-20">
+            @csrf
             <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
                 <div>
                     <label for="first-name" class="block text-sm font-semibold leading-6 text-gray-900 dark:text-custom-dark-text">First name</label>

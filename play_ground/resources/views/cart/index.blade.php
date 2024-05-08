@@ -51,7 +51,7 @@
                             <span class="dark:text-custom-dark-text font-semibold">Total</span>
                             <span class="dark:text-custom-dark-text font-semibold">${{ number_format($totalPrice, 2) }}</span>
                         </div>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-lg mt-4 w-full">Checkout</button>
+                        <button onclick="window.location='{{ route('cart.checkout') }}'" class="bg-blue-500 text-white py-2 px-4 rounded-lg mt-4 w-full">Checkout</button>
                     </div>
                 </div>
             </div>

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Product;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,7 +16,6 @@ class CartController extends Controller
 {
     public function addToCart(Request $request)
     {
-
         //validare pe productId
         $validated = Validator::make($request->all(), [
             'productId' => 'required|exists:products,id',
@@ -54,6 +56,42 @@ class CartController extends Controller
             'status' => 'error',
             'message' => 'Unknown error',
         ], 401);
+    }
+
+    /**
+     * @return Application|Factory|View|\Illuminate\Foundation\Application|\Illuminate\View\View
+     */
+    public function checkout()
+    {
+        $user = Auth::user();
+        $carts = Cart::with('product')->where('user_id', $user->id)->get();
+
+        $totalPrice = 0;
+        foreach ($carts as $cart) {
+            $totalPrice += $cart->product->price;
+        }
+
+        return view('cart.checkout', ['carts' => $carts, 'totalPrice' => $totalPrice]);
+    }
+
+    /**
+     * @param Request $request
+     * @return Application|Factory|View|\Illuminate\Foundation\Application|\Illuminate\View\View
+     */
+    public function processPayment(Request $request)
+    {
+        $user = Auth::user();
+        $cartItems = Cart::with('product')->where('user_id', $user->id)->get();
+
+        $totalPrice = 0;
+        foreach ($cartItems as $item) {
+            $totalPrice += $item->product->price;
+        }
+
+        //integrate with a payment gateway
+        //for now, let's just return a confirmation view
+
+        return view('payment.confirmation', ['total' => $totalPrice]);
     }
 
     public function remove($productId)

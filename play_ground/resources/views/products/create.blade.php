@@ -42,7 +42,7 @@
                             <x-form-field>
                                 <x-form-lable for="currency" class="dark:text-custom-dark-text">Currency</x-form-lable>
                                 <div class="mt-2">
-                                    <x-form-input name="currency" id="currency" placeholder="EUR/USD/RON" :value="old('currency')" required/>
+                                    <x-form-input name="currency" id="currency" placeholder="EUR" :value="old('currency')" required/>
 
                                     <x-form-error name="currency"/>
                                 </div>
@@ -66,7 +66,7 @@
                 </div>
 
                 <div class="mt-6 flex items-center justify-end gap-x-6">
-                    <a href="/" type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</a>
+                    <a href="/" type="button" class="text-sm font-semibold leading-6 text-custom-dark-button">Cancel</a>
                     <x-form-button>Save</x-form-button>
                 </div>
             </form>

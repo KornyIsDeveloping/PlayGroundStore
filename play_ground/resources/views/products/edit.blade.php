@@ -76,7 +76,7 @@
                                             id="currency"
                                             value="{{ $product->currency }}"
                                             class="block flex-1 border-0 bg-transparent py-1.5 px-3 dark:text-custom-dark-text placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                                            placeholder="EUR/USD/RON"
+                                            placeholder="EUR"
                                             required>
                                     </div>
 
@@ -118,7 +118,7 @@
                         <button form="delete-form" type="submit" class="dark:text-custom-dark-button text-sm font-bold">Delete</button>
                     </div>
                     <div class="flex items-center gap-x-6">
-                        <a href="/products" class="text-sm font-semibold leading-6 dark:text-custom-dark-text">Cancel</a>
+                        <a href="/products" class="text-sm font-semibold leading-6 text-custom-dark-button">Cancel</a>
                         <div>
                             <button type="submit" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Update</button>
                         </div>

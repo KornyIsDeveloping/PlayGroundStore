@@ -25,7 +25,6 @@ Route::get('admin/products/create', [ProductController::class, 'create'])->middl
 Route::post('admin/products', [ProductController::class, 'store'])->middleware('can:admin');
 
 //edit path
-//Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->middleware('auth')->name('products.edit');
 Route::resource('products', ProductController::class)->names('products')->except(['edit']);
 Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->middleware('auth')->name('products.edit');
 
@@ -33,9 +32,17 @@ Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->midd
 Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 
+//checkout
+Route::get('/cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
+
+//pay
+Route::post('/pay', [CartController::class, 'processPayment'])->name('payment.process');
+
+
 //remove from the cart
 Route::delete('/cart/remove/{productId}', [CartController::class, 'remove'])->name('cart.remove');
 
+//add to wishlist
 Route::post('/wishlist/add', [WishlistController::class, 'addToWishlist'])->name('wishlist.add');
 Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
 

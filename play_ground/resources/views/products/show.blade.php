@@ -79,27 +79,39 @@
 </x-layout>
 
 <script>
-    let addToCartRoute = @json(route('cart.add'))
-</script>
+    let addToCartRoute = @json(route('cart.add'));
 
-<script>
-    addEventListener("DOMContentLoaded", (event) => {
-
-        $('.addButton').on('click', (e) => {
-            let productId = $(e.currentTarget).data('productId')
+    document.addEventListener("DOMContentLoaded", () => {
+        $('.addButton').on('click', function(e) {
+            let productId = $(this).data('productId');
+            let button = $(this);
 
             axios.post(addToCartRoute, {
-                productId
+                productId: productId
             }).then(({data}) => {
-                console.log(data) //add red heart de adaugat clasa e.currentTarget.find si adaug clasa stilizata din css
+                if(data.status === 'success') {
+                    Swal.fire({
+                        title: "Success!",
+                        text: data.message,
+                        icon: "success"
+                    }).then(() => {
+                        button.find('svg').addClass('cart-added');
+                    });
+                } else {
+                    Swal.fire({
+                        title: "Error!",
+                        text: data.message,
+                        icon: "error"
+                    });
+                }
             }).catch(({response}) => {
-                console.log(response)
-            })
-        })
+                Swal.fire({
+                    title: "Error!",
+                    text: response.data.message || "An error occurred while trying to add the product to your wishlist.",
+                    icon: "error"
+                });
+            });
+        });
+    });
 
-    })
-
-    function myFunction() {
-        document.getElementById("demo").innerHTML = "Hello World";
-    }
 </script>

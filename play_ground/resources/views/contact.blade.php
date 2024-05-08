@@ -48,7 +48,7 @@
                     </div>
                     <label class="text-sm leading-6 text-gray-600" id="switch-1-label">
                         By selecting this, you agree to our
-                        <a href="#" class="font-semibold text-indigo-600">privacy&nbsp;policy</a>.
+                        <a href="https://d16ngdkyr07zih.cloudfront.net/original/2X/f/f6395db96591166e238ecff5219f66e4d7099322.jpeg" class="font-semibold text-indigo-600">privacy&nbsp;policy</a>.
                     </label>
                 </div>
             </div>

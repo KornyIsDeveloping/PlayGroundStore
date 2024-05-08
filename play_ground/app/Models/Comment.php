@@ -4,18 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
 
 
 class Comment extends Model
 {
-    use HasFactory;
-
     protected $fillable = ['body', 'user_id', 'product_id'];
 
     protected $keyType = 'string';
     public $incrementing = false;
 
+    /**
+     * @return void
+     */
     protected static function boot()
     {
         parent::boot();
@@ -26,6 +28,9 @@ class Comment extends Model
         });
     }
 
+    /**
+     * @return BelongsTo
+     */
     public function product()
     {
         return $this->belongsTo(Product::class);

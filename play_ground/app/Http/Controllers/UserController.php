@@ -6,17 +6,19 @@ use App\Events\StatsUpdated;
 use App\Models\Comment;
 use App\Models\Product;
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
     public function store(Request $request)
     {
         $user = User::create($request->all());
 
-        // Assuming validation and other business logic are handled
-
-        // Update stats after creating a new user
         $stats = [
             'totalUsers' => User::count(),
             'totalProducts' => Product::count(),

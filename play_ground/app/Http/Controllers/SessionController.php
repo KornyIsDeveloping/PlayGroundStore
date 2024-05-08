@@ -14,17 +14,15 @@ use Illuminate\Validation\ValidationException;
 class SessionController extends Controller
 {
     /**
-     * @return Application|Factory|View|\Illuminate\Foundation\Application
+     * @return Factory|View|\Illuminate\Foundation\Application|Application
      */
     public function create(): Factory|View|\Illuminate\Foundation\Application|Application
     {
         return view('auth.login');
     }
 
-
     /**
      * @return Application|\Illuminate\Foundation\Application|RedirectResponse|Redirector
-     * @throws ValidationException
      */
     public function store()
     {
@@ -46,7 +44,6 @@ class SessionController extends Controller
         //redirect
         return redirect('/products');
     }
-
 
     /**
      * @return RedirectResponse

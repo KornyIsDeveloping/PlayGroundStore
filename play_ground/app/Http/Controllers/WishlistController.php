@@ -24,7 +24,6 @@ class WishlistController extends Controller
      */
     public function addToWishlist(Request $request)
     {
-
         //validare pe productId
         $validated = Validator::make($request->all(), [
             'productId' => 'required',
@@ -46,7 +45,7 @@ class WishlistController extends Controller
                 'message' => 'Product not found',
             ], 401);
         }
-        //accesam user id : auth()->id()
+        //access user id : auth()->id()
 
         //wishlist create
         if( Wishlist::query()->create([
@@ -83,7 +82,7 @@ class WishlistController extends Controller
     }
 
     /**
-     * @return Application|Factory|View|\Illuminate\Foundation\Application
+     * @return Application|Factory|View|\Illuminate\Foundation\Application|\Illuminate\View\View
      */
     public function index()
     {

@@ -10,6 +10,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
@@ -20,9 +21,12 @@ use Symfony\Component\HttpFoundation\Response;
 class ProductController extends Controller
 {
 
+    /**
+     * @param Request $request
+     * @return Application|Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|View
+     */
     public function index(Request $request)
     {
-
         $query = Product::query();
 
         if ($request->has('name')) {
@@ -42,7 +46,7 @@ class ProductController extends Controller
     }
 
     /**
-     * @return Application|Factory|View|\Illuminate\Foundation\Application
+     * @return Application|Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|View
      */
     public function create()
     {
@@ -51,7 +55,7 @@ class ProductController extends Controller
 
     /**
      * @param Product $product
-     * @return Application|Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
+     * @return Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|Application
      */
     public function show(Product $product): Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|Application
     {
@@ -90,28 +94,16 @@ class ProductController extends Controller
                 'image' => $path ? 'storage/' . $path : null,
             ]);
 
-            // After saving the product, update and dispatch stats
-//            $stats = [
-//                'totalUsers' => User::count(),
-//                'totalProducts' => Product::count(),
-//                'recentProducts' => Product::where('created_at', '>=', now()->subDays(30))->count(),
-//                'totalComments' => Comment::count(),
-//            ];
-//
-//            event(new StatsUpdated($stats));
-
-            // Redirect with success message
             return redirect()->route('products.index')->with('success', 'Product created successfully.');
 
         } catch (\Illuminate\Validation\ValidationException $e) {
-            // Redirect back with errors if validation fails
             return redirect()->back()->withErrors($e->validator)->withInput();
         }
     }
 
     /**
      * @param Request $request
-     * @return Application|Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
+     * @return Application|Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|View
      */
     public function search(Request $request)
     {
@@ -126,7 +118,7 @@ class ProductController extends Controller
 
     /**
      * @param Product $product
-     * @return Application|Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
+     * @return Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|Application
      */
     public function edit(Product $product): Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|Application
     {
@@ -155,10 +147,10 @@ class ProductController extends Controller
             'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:5120',
         ]);
 
-        // Update non-image fields
+        //update non-image fields
         $product->update($validatedData);
 
-        // Handle the image upload
+        //handle the image upload
         if ($request->hasFile('image')) {
             // Delete the old image if it exists
             $existingImagePath = 'public/' . $product->image; // Path is relative to the "storage" folder
@@ -166,17 +158,19 @@ class ProductController extends Controller
                 Storage::delete($existingImagePath);
             }
 
-            // Store the new image and update the product record
+            //store the new image and update the product record
             $path = $request->file('image')->store('images', 'public');
-            $product->image = basename($path); // Only save the filename, not the full path
-            $product->save(); // Save the product with the new image path
+            $product->image = basename($path);
+            $product->save();
         }
 
-        // Redirect back with success message
         return redirect()->route('products.index')->with('success', 'Product updated successfully.');
-
     }
 
+    /**
+     * @param Product $product
+     * @return Application|\Illuminate\Foundation\Application|RedirectResponse|Redirector
+     */
     public function destroy(Product $product): Application|\Illuminate\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
     {
         $product->delete();

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
@@ -13,16 +15,15 @@ use Illuminate\Validation\Rules\Password;
 class RegisteredUserController extends Controller
 {
     /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
+     * @return Factory|View|\Illuminate\Foundation\Application|Application
      */
     public function create(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\Foundation\Application
     {
         return view('auth.register');
     }
 
-
     /**
-     * @return Application|\Illuminate\Foundation\Application|RedirectResponse|Redirector
+     * @return RedirectResponse
      */
     public function store()
     {

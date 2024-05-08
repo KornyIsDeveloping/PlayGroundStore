@@ -6,6 +6,7 @@ use App\Traits\UuidTrait;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  *
@@ -19,14 +20,21 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Cart extends Model
 {
-    use HasFactory, UuidTrait;
+    use UuidTrait;
 
         protected $guarded = [];
+
+    /**
+     * @return BelongsTo
+     */
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * @return BelongsTo
+     */
     public function product()
     {
         return $this->belongsTo(Product::class);

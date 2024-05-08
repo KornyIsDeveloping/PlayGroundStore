@@ -74,6 +74,10 @@ Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->nam
 Route::get('/dashboard', [DashboardController::class, 'showDashboard'])->name('dashboard.show')->middleware('auth');
 Route::post('/users', [UserController::class, 'store'])->name('users.store')->middleware('auth');
 
+//stats from the home page
+Route::get('/', [DashboardController::class, 'showDashboard'])->name('home');
+
+
 
 
 //explicatii

@@ -38,6 +38,9 @@ Route::get('/cart/checkout', [CartController::class, 'checkout'])->name('cart.ch
 //pay
 Route::post('/pay', [CartController::class, 'processPayment'])->name('payment.process');
 
+//successful payment processing
+// After successful payment processing
+//return redirect()->route('payment.success')->with('success', 'Your payment of €' . number_format($total, 2) . ' has been processed successfully.');
 
 //remove from the cart
 Route::delete('/cart/remove/{productId}', [CartController::class, 'remove'])->name('cart.remove');

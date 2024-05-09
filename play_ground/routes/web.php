@@ -29,6 +29,19 @@ Route::middleware(['auth', 'can:admin'])->group(function () {
     Route::get('/admin/dashboard', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.dashboard');
 });
 
+//admin CRUD actions
+Route::middleware(['auth', 'can:admin'])->prefix('admin')->group(function () {
+    Route::get('/users', [\App\Http\Controllers\UserController::class, 'index'])->name('admin.users.index');
+    Route::get('/users/create', [\App\Http\Controllers\UserController::class, 'create'])->name('admin.users.create');
+    Route::post('/users', [\App\Http\Controllers\UserController::class, 'store'])->name('admin.users.store');
+    Route::get('/users/{user}/edit', [\App\Http\Controllers\UserController::class, 'edit'])->name('admin.users.edit');
+    Route::put('/users/{user}', [\App\Http\Controllers\UserController::class, 'update'])->name('admin.users.update');
+    Route::delete('/users/{user}', [\App\Http\Controllers\UserController::class, 'destroy'])->name('admin.users.destroy');
+    Route::patch('/users/{user}/toggle-status', [\App\Http\Controllers\UserController::class, 'toggleStatus'])->name('admin.users.toggleStatus');
+});
+
+
+
 //edit path
 Route::resource('products', ProductController::class)->names('products')->except(['edit']);
 Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->middleware('auth')->name('products.edit');
@@ -42,10 +55,6 @@ Route::get('/cart/checkout', [CartController::class, 'checkout'])->name('cart.ch
 
 //pay
 Route::post('/pay', [CartController::class, 'processPayment'])->name('payment.process');
-
-//successful payment processing
-// After successful payment processing
-//return redirect()->route('payment.success')->with('success', 'Your payment of €' . number_format($total, 2) . ' has been processed successfully.');
 
 //remove from the cart
 Route::delete('/cart/remove/{productId}', [CartController::class, 'remove'])->name('cart.remove');

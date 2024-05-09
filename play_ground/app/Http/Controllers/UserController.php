@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Controllers\Controller;
 
 use App\Events\StatsUpdated;
 use App\Models\Comment;
@@ -15,19 +16,76 @@ class UserController extends Controller
      * @param Request $request
      * @return JsonResponse
      */
+//    public function store(Request $request)
+//    {
+//        $user = User::create($request->all());
+//
+//        $stats = [
+//            'totalUsers' => User::count(),
+//            'totalProducts' => Product::count(),
+//            'recentProducts' => Product::where('created_at', '>=', now()->subDays(30))->count(),
+//            'totalComments' => Comment::count(),
+//        ];
+//
+//        event(new StatsUpdated($stats));
+//
+//        return response()->json($user);
+//    }
+    public function index()
+    {
+        $users = User::all();
+        return view('admin.users.index', compact('users'));
+    }
+
+    public function create()
+    {
+        return view('admin.users.create');
+    }
+
     public function store(Request $request)
     {
-        $user = User::create($request->all());
+        $request->validate([
+            'email' => 'required|email|unique:users,email',
+            'name' => 'required|string',
+            'role' => 'required|string',
+            'password' => 'required|min:6',
+        ]);
 
-        $stats = [
-            'totalUsers' => User::count(),
-            'totalProducts' => Product::count(),
-            'recentProducts' => Product::where('created_at', '>=', now()->subDays(30))->count(),
-            'totalComments' => Comment::count(),
-        ];
+        $user = new User($request->all());
+        $user->password = bcrypt($request->password);
+        $user->save();
 
-        event(new StatsUpdated($stats));
-
-        return response()->json($user);
+        return redirect()->route('admin.users.index');
     }
+
+    public function edit(User $user)
+    {
+        return view('admin.users.edit', compact('user'));
+    }
+
+    public function update(Request $request, User $user)
+    {
+        $request->validate([
+            'email' => 'required|email|unique:users,email,' . $user->id,
+            'name' => 'required|string',
+            'role' => 'required|string',
+        ]);
+
+        $user->update($request->all());
+        return redirect()->route('admin.users.index');
+    }
+
+    public function destroy(User $user)
+    {
+        $user->delete();
+        return redirect()->route('admin.users.index');
+    }
+
+    public function toggleStatus(User $user)
+    {
+        $user->is_active = !$user->is_active;
+        $user->save();
+        return redirect()->route('admin.users.index');
+    }
+
 }

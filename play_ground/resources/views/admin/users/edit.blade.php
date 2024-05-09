@@ -22,7 +22,7 @@
 
                     <div class="mb-4">
                         <label for="role" class="block text-sm font-medium text-custom-dark-text">Role</label>
-                        <input type="text" name="role" id="role" value="{{ $user->is_admin }}" required class="mt-1 block w-full dark:bg-gray-700 text-custom-dark-text rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                        <input type="text" name="role" id="role" value="{{ $user->role }}" required class="mt-1 block w-full dark:bg-gray-700 text-custom-dark-text rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                     </div>
 
                     <div class="flex items-center justify-end mt-4">
@@ -33,6 +33,6 @@
                 </form>
             </div>
         </div>
+        <a href="{{ route('admin.dashboard') }}" type="button" class="text-red-400 text-sm font-bold mt-5">Back</a>
     </div>
-
 </x-layout>

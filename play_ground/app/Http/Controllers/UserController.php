@@ -80,7 +80,8 @@ class UserController extends Controller
     {
         $request->validate([
             'email' => 'required|email|unique:users,email,' . $user->id,
-            'name' => 'required|string',
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
             'role' => 'required|string',
         ]);
 

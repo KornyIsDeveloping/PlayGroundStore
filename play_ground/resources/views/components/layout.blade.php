@@ -30,6 +30,9 @@
                                 <x-nav-link href="/wishlist" :active="request()->is('wishlist')">Wishlist</x-nav-link>
                                 <x-nav-link href="/cart" :active="request()->is('cart')">Cart</x-nav-link>
                                 <x-nav-link href="/contact" :active="request()->is('contact')">Contact</x-nav-link>
+                                @if(auth()->user() && auth()->user()->can('admin'))
+                                    <x-nav-link href="{{ route('admin.dashboard') }}" class="p-2 text-sm text-gray-700 dark:text-gray-500">Admin Dashboard</x-nav-link>
+                                @endif
                             </div>
                         </div>
                     </div>

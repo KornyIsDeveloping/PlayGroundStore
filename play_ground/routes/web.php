@@ -24,6 +24,11 @@ Route::post('/logout', [SessionController::class, 'destroy'])->name('logout');
 Route::get('admin/products/create', [ProductController::class, 'create'])->middleware('can:admin');
 Route::post('admin/products', [ProductController::class, 'store'])->middleware('can:admin');
 
+//admin dashboard
+Route::middleware(['auth', 'can:admin'])->group(function () {
+    Route::get('/admin/dashboard', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.dashboard');
+});
+
 //edit path
 Route::resource('products', ProductController::class)->names('products')->except(['edit']);
 Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->middleware('auth')->name('products.edit');

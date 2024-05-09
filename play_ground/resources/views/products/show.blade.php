@@ -70,7 +70,6 @@
                         @endcan
                     </footer>
                     <p class="text-gray-500 dark:text-gray-300">{{ $comment->body }}</p>
-                    <!-- Add reply button or other interaction options -->
                 </article>
             @endforeach
         </div>

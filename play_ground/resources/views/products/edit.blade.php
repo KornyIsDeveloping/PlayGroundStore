@@ -19,7 +19,7 @@
                                             name="name"
                                             id="name"
                                             value="{{ $product->name }}"
-                                            class="block flex-1 border-0 bg-transparent py-1.5 px-3 dark:text-custom-dark-text placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                                            class="block flex-1 border-0 dark:bg-gray-800 py-1.5 px-3 dark:text-custom-dark-text placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                                             placeholder="Mortal Kombat 11"
                                             required>
                                     </div>
@@ -38,7 +38,7 @@
                                     name="description"
                                     id="description"
                                     value="{{ $product->description }}"
-                                    class="block flex-1 border-0 bg-transparent py-1.5 px-3 dark:text-custom-dark-text placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                                    class="block flex-1 border-0 dark:bg-gray-800 py-1.5 px-3 dark:text-custom-dark-text placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                                     placeholder="Edit your listing game information..."
                                     required>{{ $product->description }}</textarea>
                                     </div>
@@ -56,7 +56,7 @@
                                             name="price"
                                             id="price"
                                             value="{{ $product->price }}"
-                                            class="block flex-1 border-0 bg-transparent py-1.5 px-3 dark:text-custom-dark-text placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                                            class="block flex-1 border-0 dark:bg-gray-800 py-1.5 px-3 dark:text-custom-dark-text placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                                             placeholder="30.99"
                                             required>
                                     </div>
@@ -75,7 +75,7 @@
                                             name="currency"
                                             id="currency"
                                             value="{{ $product->currency }}"
-                                            class="block flex-1 border-0 bg-transparent py-1.5 px-3 dark:text-custom-dark-text placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                                            class="block flex-1 border-0 dark:bg-gray-800 py-1.5 px-3 dark:text-custom-dark-text placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                                             placeholder="EUR"
                                             required>
                                     </div>
@@ -94,7 +94,7 @@
                                             name="stock"
                                             id="stock"
                                             value="{{ $product->stock }}"
-                                            class="block flex-1 border-0 bg-transparent py-1.5 px-3 dark:text-custom-dark-text placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                                            class="block flex-1 border-0 dark:bg-gray-800 py-1.5 px-3 dark:text-custom-dark-text placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                                             placeholder="10"
                                             required>
                                     </div>

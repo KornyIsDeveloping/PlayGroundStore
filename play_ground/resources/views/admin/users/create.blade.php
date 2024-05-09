@@ -9,7 +9,12 @@
                     <form method="POST" action="{{ route('admin.users.store') }}">
                         @csrf
                         <div class="mb-4">
-                            <label for="name" class="block text-sm font-medium text-custom-dark-text">Name</label>
+                            <label for="name" class="block text-sm font-medium text-custom-dark-text">First Name</label>
+                            <input type="text" name="name" id="name" required class="mt-1 block w-full dark:bg-gray-700 text-custom-dark-text rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="name" class="block text-sm font-medium text-custom-dark-text">Last Name</label>
                             <input type="text" name="name" id="name" required class="mt-1 block w-full dark:bg-gray-700 text-custom-dark-text rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                         </div>
 

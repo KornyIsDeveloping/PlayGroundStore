@@ -3,16 +3,6 @@
     </x-slot:heading>
 
     <div class="h-screen">
-        <nav class="bg-custom-light dark:bg-custom-dark">
-            <ul class="flex list-none m-0">
-                <li class="mr-2">
-                    <a href="{{ route('admin.users.index') }}" class="bg-indigo-600 text-white py-2 px-4 rounded">Manage Users</a>
-                </li>
-                <li>
-                    <a href="{{ route('admin.users.create') }}" class="bg-indigo-600 text-white py-2 px-4 rounded">Add New User</a>
-                </li>
-            </ul>
-        </nav>
         <div class="container mx-auto px-4 py-8">
             <h1 class="dark:text-custom-dark-text text-3xl font-bold mb-5">Admin Dashboard</h1>
             <div class="overflow-x-auto">
@@ -40,5 +30,15 @@
                 </table>
             </div>
         </div>
+        <nav class="bg-custom-light dark:bg-custom-dark">
+            <ul class="flex list-none m-0">
+                <li class="mr-2">
+                    <a href="{{ route('admin.users.index') }}" class="bg-indigo-600 text-white py-2 px-4 rounded">Manage Users</a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.users.create') }}" class="bg-indigo-600 text-white py-2 px-4 rounded">Add New User</a>
+                </li>
+            </ul>
+        </nav>
     </div>
 </x-layout>

@@ -52,11 +52,23 @@ class UserController extends Controller
             'password' => 'required|min:6',
         ]);
 
-        $user = new User($request->all());
-        $user->password = bcrypt($request->password);
-        $user->save();
+//        $user = new User($request->all());
+//        $user->password = bcrypt($request->password);
+//        $user->save();
+//
+//        return redirect()->route('admin.users.index');
+        $user = User::create([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+        ]);
 
-        return redirect()->route('admin.users.index');
+        if ($user) {
+            return redirect()->route('admin.users.index')->with('success', 'User created successfully.');
+        } else {
+            return back()->withErrors('Failed to create the user.');
+        }
     }
 
     public function edit(User $user)

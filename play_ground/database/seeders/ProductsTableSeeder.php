@@ -29,7 +29,7 @@ class ProductsTableSeeder extends Seeder
 //                'image' => 'zelda.jpeg',
                 'image' => config('productsimages.images.' . 'The Legend of Zelda: Breath of the Wild', 'default.jpg'),
                 'genre' => 'Action-Adventure',
-            ],
+        ],
             [
                 'id' => Str::uuid()->toString(),
                 'name' => 'Red Dead Redemption 2',
